@@ -1,0 +1,32 @@
+package com.medem.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.medem.dao.BodySystemDAO;
+import com.medem.dto.Assembler;
+import com.medem.dto.BodySystemDTO;
+import com.medem.service.BodySystemService;
+
+public class BodySystemServiceImpl implements BodySystemService {
+    
+    @Autowired
+    private BodySystemDAO bodySystemDAO;
+
+    @Override
+    @Transactional
+    public BodySystemDTO getBodySystemById(int id) {
+        return Assembler.createBodySystemDTO(this.bodySystemDAO.getBodySystemById(id));
+    }
+
+    @Override
+    @Transactional
+    public List<BodySystemDTO> listBodySystems() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    
+
+}

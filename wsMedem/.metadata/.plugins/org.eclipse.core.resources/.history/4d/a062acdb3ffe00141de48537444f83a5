@@ -1,0 +1,337 @@
+<%@page session="true"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
+
+<!DOCTYPE>
+<html>
+    <head>
+      <meta charset="utf=8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+      <script src="bootstrap/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+      <script type='text/javascript' src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
+	  <script type='text/javascript' src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/additional-methods.js"></script>
+	  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	  <script src="/medem/js/main_functions.js"></script>
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+      <link href="bootstrap/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/general_layout_override.css" rel="stylesheet">
+      <link href="css/custom.css" rel="stylesheet" >
+      <title>MEDEM :: Nuevo Empleado</title>
+    </head>
+
+	<body id="editEmployee">
+	
+		    <jsp:include page="layouts/navigation_layout.jsp"></jsp:include>
+
+			<jsp:include page="layouts/modal_layout.jsp" ></jsp:include>
+	
+			<div class="container">
+			  <div class="col-md-12">
+			    <div class="row">
+					<ul class="nav nav-tabs">
+                      <li class="active"><a href="#">Ficha de Identificaci&#243;n</a></li>
+                    </ul><!-- .nav nav-tabs -->
+
+                    <div class="tab-content">
+                    	<div class="tab-pane fade in active" id="employeeId">
+                    		<div class="panel panel-default form">
+                    			<div class="panel-body">
+                    			  <form:form action="/medem/updateEmployee" method="POST" modelAttribute="Employee" id="editEmployeeForm">
+	                                <div class="row">
+	                                  <div class="col-sm-4">
+	                                    <div class="form-group">
+	                                      <form:label path="name"><spring:message text="Nombre(s)" /><span style="color:red;" data-toggle="tooltip" data-placement="right" title="Tooltip on right"> * </span></form:label>
+	                                      <form:input path="name" data-name="name" type="text" class="form-control required-text" placeholder="Nombre(s)" tabindex="1"/>
+	                                    </div><!-- .form-group -->                          
+	                                  </div><!-- .col-sm-4 -->
+	                                  <div class="col-sm-4">
+	                                    <div class="form-group">
+	                                      <form:label path="lastName1"><spring:message text="Apellido paterno" /><span style="color:red;">*</span></form:label>
+	                                      <form:input path="lastName1" type="text" class="form-control required-text" placeholder="Apellido paterno" tabindex="1"/>
+	                                    </div><!-- .form-group -->                          
+	                                  </div><!-- .col-sm-4 -->
+	                                  <div class="col-sm-4">
+	                                    <div class="form-group">
+	                                      <form:label path="lastName2"><spring:message text="Apellido materno" /><span style="color:red;">*</span></form:label>
+	                                      <form:input type="text" path="lastName2" class="form-control required-text" placeholder="Apellido materno" tabindex="3"/>
+	                                    </div><!-- .form-group -->                          
+	                                  </div><!-- .col-sm-4 --> 	                                  	                                  
+	                                </div><!-- .row -->
+
+	                                <hr class="divider">
+	                                
+	                                <div class="row">
+	                                  <div class="col-sm-3">
+	                                    <div class="form-group" id="dob">
+	                                      <form:label path="dateOfBirth"><spring:message text="Fecha de nacimiento" /><span style="color:red;">*</span></form:label>
+      									  	<div class="input-group">
+      									    	<form:input path="dateOfBirth" id="dateOfBirth" type="text" class="form-control input-small datepicker required-text" placeholder="Fecha de nacimiento" tabindex="4"/>
+      									    	<div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+      									  	</div>
+	                                    </div><!-- .form-group -->                          
+	                                  </div><!-- .col-sm-2 -->  
+	                                  <div class="col-sm-2">
+	                                    <div class="form-group">
+	                                       <form:label path="gender">Genero<span style="color:red;">*</span></form:label>
+	                                       <form:select path="gender" id="gender" description="Genero" class="form-control required-select" tabindex="5">
+	                                         <form:option value="">Genero</form:option>
+	                                         <form:option value="1">Femenino</form:option>
+	                                         <form:option value="2">Masculino</form:option>
+	                                        </form:select><!-- .form-control -->
+	                                    </div><!--. form-group input-group -->                         
+	                                  </div><!-- .col-sm-2 -->
+	                                  <div class="col-sm-3">
+	                                    <div class="form-group">
+	                                       <form:label path="maritalStatus">Estado civil</form:label>
+	                                       <form:select path="maritalStatus" id="maritalStatus" description="Estado civil" class="form-control required-select" tabindex="6">
+	                                         <form:option value="">Estado civil</form:option>
+	                                         <form:option value="1">Soltero</form:option>
+	                                         <form:option value="2">Casado</form:option>
+	                                        </form:select><!-- .form-control -->
+	                                    </div><!--. form-group input-group -->                         
+	                                  </div><!-- .col-sm-3 --> 
+	                                  <div class="col-sm-4">
+	                                    <div class="form-group">
+	                                      <form:label path="religion">Religi&#243;n</form:label>
+	                                      <form:input path="religion" type="text" class="form-control" id="religion" placeholder="Religión" tabindex="7"/>
+	                                    </div><!-- .form-group -->                          
+	                                  </div><!-- .col-sm-5 --> 	                                  	                                  	                                  	                                
+	                                </div><!--  .row  -->
+	                                
+	                                <hr class="divider"> 
+	                                
+	                                <div class="row">
+	                                  <div class="col-sm-3">
+	                                    <div class="form-group">
+	                                       <form:label path="bloodGroup">Grupo sanguineo<span style="color:red;">*</span></form:label>
+	                                       <form:select path="bloodGroup" id="bloodGroup" description="Grupo sanguineo" class="form-control required-select" tabindex="8">
+	                                         <form:option value="">Grupo sanguineo</form:option>
+	                                         <form:option value="1">A</form:option>
+	                                         <form:option value="2">B</form:option>
+	                                         <form:option value="3">AB</form:option>
+	                                         <form:option value="4">O</form:option>
+	                                        </form:select><!-- .form-control -->
+	                                    </div><!--. form-group input-group -->                         
+	                                  </div><!-- .col-sm-3 -->
+	                                  <div class="col-sm-3">
+	                                    <div class="form-group">
+	                                       <form:label path="rh">Rh<span style="color:red;">*</span></form:label>
+	                                       <form:select path="rh" id="rh" class="form-control required-select" tabindex="9" description="Rh">
+	                                         <form:option value="">Rh</form:option>
+	                                         <form:option value="1">[+]</form:option>
+	                                         <form:option value="2">[-]</form:option>
+	                                       </form:select><!-- .form-control -->
+	                                    </div><!--. form-group input-group -->                         
+	                                  </div><!-- .col-sm-3 --> 
+	                                  <div class="col-sm-6">
+	                                    <div class="form-group">
+	                                      <form:label path="originPlace">Lugar de origen</form:label>
+	                                      <form:input path="originPlace" type="text" class="form-control" id="origin" placeholder="Lugar de origen" tabindex="10"/>
+	                                    </div><!-- .form-group -->                          
+	                                  </div><!-- .col-sm-6 --> 	                                  	                                  	                                
+	                                </div><!-- .row -->
+	                                
+	                                <hr class="divider">
+	                                
+	                                <div class="row">
+	                                  <div class="col-sm-4">
+	                                    <div class="form-group">
+	                                      <form:label path="address.street">Domicilio<span style="color:red;">*</span></form:label>
+	                                      <form:input path="address.street" class="form-control required-text" placeholder="Domicilio" tabindex="11" />
+	                                    </div><!-- .form-group -->                          
+	                                  </div><!-- .col-sm-4 -->	
+	                                  <div class="col-sm-3">
+	                                    <div class="form-group">
+	                                      <form:label path="phone">Telefono<span style="color:red;">*</span></form:label>
+	                                      <form:input path="phone" type="text" class="form-control required-text" name="phone" placeholder="Telefono" tabindex="12"/>
+	                                    </div><!-- .form-group -->                          
+	                                  </div><!-- .col-sm-3 --> 
+	                                  <div class="col-sm-3">
+	                                    <div class="form-group">
+	                                      <form:label path="address.town">Delegaci&#243;n</form:label>
+	                                      <form:input path="address.town" type="text" id="town" class="form-control" placeholder="Delegación" tabindex="13"/>
+	                                    </div><!-- .form-group -->                          
+	                                  </div><!-- .col-sm-3 -->	 
+	                                  <div class="col-sm-2">
+	                                    <div class="form-group">
+	                                      <form:label path="address.zipCode">C&#243;digo postal</form:label>
+	                                      <form:input path="address.zipCode" name="zipCode" type="text" id="zipCode" class="form-control required-text" placeholder="Código postal" tabindex="14"/>
+	                                    </div><!-- .form-group -->                          
+	                                  </div><!-- .col-sm-2 -->	                                                                   	                                                                  
+	                                </div><!--  .row -->
+	                                
+	                                <hr class="divider">	
+	                                
+	                                <div class="row">
+	                                  <div class="col-sm-6">
+	                                    <div class="form-group">
+	                                      <form:label path="contactName">Nombre de la persona de contacto<span style="color:red;">*</span></form:label>
+	                                      <form:input path="contactName" type="text" class="form-control required-text" name="contactName" placeholder="Nombre de la persona de contacto" tabindex="15"/>
+	                                    </div><!-- .form-group -->                          
+	                                  </div><!-- .col-sm-6 -->  
+	                                  <div class="col-sm-6">
+	                                    <div class="form-group">
+	                                      <form:label path="contactPhone">Telefono de la persona de contacto<span style="color:red;">*</span></form:label>
+	                                      <form:input path="contactPhone" type="text" class="form-control required-text" name="contactPhone" placeholder="Telefono de la persona de contacto" tabindex="16"/>
+	                                    </div><!-- .form-group -->                          
+	                                  </div><!-- .col-sm-6 -->       
+	                                </div><!-- .row -->  
+	                                
+	                                <hr class="divider">  
+	                                
+	                                <div class="row">
+	                                 <div class="col-sm-6">
+	                                   <div class="form-group">
+	                                     <label for="areaId">Area<span style="color:red;">*</span></label>
+	                                     <select name="area" class="form-control required-select" tabindex="17">
+	                                       <option value="">Area</option>
+	                                       <c:forEach items = "${listAreas}" var="area">
+		   								     <option value="${area.id}">${area.name}</option>
+		   								   </c:forEach>
+	                                     </select><!-- .form-control -->
+	                                     <form:hidden path="area.id" />
+	                                   </div><!-- .form-control -->                          
+	                                 </div><!-- .col-sm-6 -->                                   
+	                                </div><!-- .row -->	
+	                                
+	                                <hr class="divider"> 
+	                                
+	                                <form:hidden path="userName" value="armando" id="userName" />
+	                                <form:hidden path="company.id" value ="1" id="" />                               	                                
+	                                
+	                                <input type="submit" class="btn btn-block btn-primary" value="Generar Ficha de Identificación" tabindex="18" />
+                                
+                                	</form:form>
+                    			</div><!-- .panel-body -->
+                    		</div><!-- .panel panel-default -->
+                    	</div><!-- .tab-pane fade in active -->
+                   	</div><!-- .tab-content -->			    
+			    </div><!-- .row -->
+			  </div><!-- .col-md-12 -->
+			</div><!-- .container -->
+			
+      <!-- Footer -->
+      <jsp:include page="layouts/footer_layout.jsp"></jsp:include>			
+	
+	</body>
+
+
+    <c:if test="${!empty errorMessage }">
+      <script>
+        showErrorMessage("${errorMessage}");
+      </script>
+    </c:if>
+
+    <script>
+      var current_date = new Date();
+      $( ".datepicker" ).datepicker({
+          changeMonth: true,
+          changeYear: true,
+          yearRange: "1900:" + new Date().getFullYear(),
+          dateFormat: "yy-mm-dd",
+          defaultDate: current_date
+      });       
+
+	  $(document).ready(function(){
+
+		  $validator = $("#newEmployeeForm").validate({
+				rules: {
+					name: {
+		                minlength: 2,
+		                required: true	
+					},
+					lastName1: {
+						minlength: 2,
+						required: true
+					},
+					lastName2: {
+						minlength: 2,
+						required: true
+					},
+					dateOfBirth: {
+						required: true
+					},
+					gender: {
+						required: true
+					},
+					address: {
+						required: true,
+						minlength: 2
+					},
+					"#address.street":{
+						required: true,
+						minlength: 2
+					},
+					bloodGroup: {
+						required: true
+					},
+					rh: {
+						required: true
+					},
+					area: {
+						required: true
+					},
+					maritalStatus: {
+						required: true
+					},
+					phone:{
+						required: true,
+						minlength: 8,
+						maxlength: 10
+					},
+					contactPhone: {
+						required: true,
+						minlength: 2
+					},
+					contactName:{
+						required: true,
+						minlength: 2
+					}
+					
+				},
+		        messages: {
+		            name: "Por favor, introduzca el nombre.",
+		            lastName1: "Por favor, introduzca el apellido paterno.",
+		            lastName2: "Por favor, introduzca el apellido materno.",
+		            dateOfBirth: "Por favor, introduzca la fecha de nacimiento.",
+		            gender: "Por favor, escoja un genero.",
+		            maritalStatus: "Por favor, escoja un estado civil.",
+		            bloodGroup: "Por favor, seleccione un grupo sanguineo.",
+		            rh: "Por favor, seleccione un Rh.",
+		            "#address.street": "Por favor, introduzca un domicilio.",
+		            phone: "Por favor, introduzca un telefono.",
+		            contactName: "Por favor, introduzca el nombre de la persona de contacto.",
+		            contactPhone: "Por favor, introduzca el telefono de la persona de contacto.",
+		            area: "Por favor, seleccione un area."
+		        },
+				errorPlacement: function(error, element) {},
+				highlight: function (element) {
+		            $(element).closest("div").addClass('has-error');
+		        },
+		        submitHandler: function(form) { 
+		        	form.submit(); 
+		        }			
+			 }); 
+
+	    	  $("#editEmployeeForm").submit(function(){
+	     		 if($validator.numberOfInvalids() > 0){
+	     			 var errorSummary = "";
+	     			 $.each($validator.errorList, function(){
+	     				 errorSummary += this.message + "<br/>";
+	     			 });
+	     			 showMessage(errorSummary, "danger", "myModal");
+	     		 } 
+	     		 else{
+	     			 showMessage("Procesando...", "success", "myModal");
+	     		 }
+	     	  });	  
+	  
+	  });
+
+    </script>
+
+</html>

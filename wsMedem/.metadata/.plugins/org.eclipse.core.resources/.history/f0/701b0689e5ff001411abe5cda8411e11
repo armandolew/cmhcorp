@@ -1,0 +1,60 @@
+package com.medem.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.medem.dao.ActivityCompanyDAO;
+import com.medem.dto.Assembler;
+import com.medem.dto.CompanyActivityDTO;
+import com.medem.model.CompanyActivity;
+import com.medem.service.AreaServiceImpl;
+import com.medem.service.CompanyActivityService;
+
+@Service("companyActivityService")
+public class CompanyActivityServiceImpl implements CompanyActivityService {
+    
+    @Autowired
+    private ActivityCompanyDAO companyActivityDAO;
+    
+    private static final Logger logger = Logger.getLogger(AreaServiceImpl.class);
+    
+    @Override
+    @Transactional
+    public CompanyActivityDTO getCompanyActivityById(int id){
+        BasicConfigurator.configure();
+        CompanyActivityDTO companyActivityDTO = null;
+        try{
+            companyActivityDTO = Assembler.createCompanyActivityDTO(this.companyActivityDAO.getCompanyActivityById(id));
+        }
+        catch(DataAccessException dae){
+            logger.error(dae);
+        }
+        return companyActivityDTO;
+    }
+
+    @Override
+    @Transactional
+    public List<CompanyActivityDTO> listActivitiesFromTag(String tag) {
+        List<CompanyActivityDTO> listActivities = new ArrayList<CompanyActivityDTO>();
+        
+        try{
+            for(CompanyActivity companyActivity : companyActivityDAO.listActivities(tag)){
+                listActivities.add(Assembler.createCompanyActivityDTO(companyActivity));
+            }
+            
+        }
+        catch(Exception e){
+            
+        }
+        
+        return listActivities;
+    }
+
+}

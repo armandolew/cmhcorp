@@ -1,0 +1,7 @@
+package com.medem.dto;
+
+import java.io.Serializable;
+
+public class DiagnosisDTO implements Serializable {
+
+}

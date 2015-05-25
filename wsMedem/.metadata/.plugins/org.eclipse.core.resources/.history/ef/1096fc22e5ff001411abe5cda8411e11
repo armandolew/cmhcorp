@@ -1,0 +1,14 @@
+package com.medem.dao;
+
+import java.util.List;
+
+import org.springframework.dao.DataAccessException;
+
+import com.medem.model.CompanyActivity;
+
+public interface ActivityCompanyDAO {
+    
+    public CompanyActivity getCompanyActivityById(int id) throws DataAccessException;
+    public List<CompanyActivity> listActivities(String tag) throws DataAccessException;
+    
+}

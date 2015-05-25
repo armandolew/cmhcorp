@@ -1,0 +1,17 @@
+package com.medem.helpers;
+
+import java.util.List;
+
+import org.springframework.validation.FieldError;
+
+public class ErrorsHelper {
+
+	public String getErrorMessages(List<FieldError> errors){
+		String fieldErrors = "Los siguientes campos presentan error: <br/>";
+		
+		for(FieldError fieldError : errors){
+			fieldErrors += (fieldError.getField()) + "<br/>";
+		}
+		return fieldErrors;
+	}
+}

@@ -1,0 +1,17 @@
+package com.medem.dto;
+
+import java.io.Serializable;
+
+import com.medem.model.TypeDiagnosis;
+
+public class DiagnosisDTO implements Serializable {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    private int id;
+    private TypeDiagnosis type;
+    private String name;
+
+}

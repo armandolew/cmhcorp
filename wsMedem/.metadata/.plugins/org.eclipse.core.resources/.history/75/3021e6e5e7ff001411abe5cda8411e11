@@ -1,0 +1,6 @@
+package com.medem.dao;
+
+@Repository("bloodGroup")
+public class BloodGroupDAOImpl extends HibernateDaoSupportWithJdbcTemplateHolder implements BloodGroupDAO {
+
+}

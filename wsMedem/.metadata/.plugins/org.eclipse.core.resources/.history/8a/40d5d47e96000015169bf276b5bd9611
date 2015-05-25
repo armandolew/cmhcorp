@@ -1,0 +1,91 @@
+package com.medem.dao;
+
+import java.util.List;
+
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
+import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.medem.model.Area;
+import com.medem.service.AreaServiceImpl;
+
+@Repository("areaDAO")
+public class AreaDAOImpl extends HibernateDaoSupportWithJdbcTemplateHolder implements AreaDAO {
+
+	@Autowired
+	public AreaDAOImpl(HibernateTemplate hibernateTemplate){
+		super(hibernateTemplate);
+	}
+	
+	private static final Logger logger = Logger.getLogger(AreaServiceImpl.class);
+	
+	@Autowired
+	private CompanyDAO companyDAO;
+	
+	@Transactional
+	public void addArea(Area area){
+		getHibernateTemplate().getSessionFactory().getCurrentSession().save(area);
+		logger.debug(area.toString());
+		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<Area> listAreas(int id_company){
+		Query listQuery = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from Area area where area.company.id ='" + id_company + "' order by area.name ASC");
+		
+		return listQuery.list();
+	}
+
+	@Transactional
+	public Area getAreaById(int id){
+		return (Area) getHibernateTemplate().getSessionFactory().getCurrentSession().load(Area.class, new Integer(id));
+	}
+
+	@Transactional
+	public Long countAreas(int id_company){
+		return (Long) getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("select count (*) from Area area where area.company.id='" + id_company + "'").uniqueResult();
+	}
+	
+	@Transactional
+	public void updateArea(Area area) throws DataAccessException{
+	    Area areaToUpdate = (Area) getHibernateTemplate().getSessionFactory().getCurrentSession().load(Area.class, new Integer(area.getId()));
+        BasicConfigurator.configure();
+        areaToUpdate.setName(area.getName());
+        logger.debug("AREA UPDATED: " + areaToUpdate.toString());
+        
+        getHibernateTemplate().getSessionFactory().getCurrentSession().save(areaToUpdate);
+	}
+	
+	@Transactional
+	public Area getFullArea(int areaId) throws DataAccessException{
+	    Criteria criteria = getHibernateTemplate().getSessionFactory().getCurrentSession().createCriteria(Area.class, "area");
+	    criteria.setFetchMode("company", FetchMode.JOIN);
+	    criteria.add(Restrictions.idEq(areaId)).uniqueResult();
+	    Area area = (Area) criteria.list().get(0);
+	    logger.debug("AREA FULL: " + area.toString());
+	    return area;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<Area> searchArea(String name, int companyId) throws DataAccessException{
+	    return getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from Area area where area.name like '%" + name + "%' and area.company.id = "+ companyId +" and area.active = 1").list();
+	}
+	
+	@Transactional
+	public void deleteArea(Area area) throws DataAccessException{
+	    Area areaToDelete = (Area) getHibernateTemplate().getSessionFactory().getCurrentSession().load(Area.class, new Integer(area.getId()));
+	    areaToDelete.setActive(0);
+	    getHibernateTemplate().getSessionFactory().getCurrentSession().save(areaToDelete);
+	}
+	
+}

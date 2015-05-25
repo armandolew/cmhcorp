@@ -1,0 +1,7 @@
+package com.medem.service.impl;
+
+import com.medem.service.DiagnosisService;
+
+public class DiagnosisServiceImpl implements DiagnosisService {
+
+}

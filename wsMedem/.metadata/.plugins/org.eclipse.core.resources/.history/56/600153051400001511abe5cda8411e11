@@ -1,0 +1,5 @@
+package com.medem.dao;
+
+public class TypeBodySystemDAO {
+
+}

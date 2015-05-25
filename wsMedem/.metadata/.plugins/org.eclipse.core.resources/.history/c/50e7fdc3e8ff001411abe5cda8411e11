@@ -1,0 +1,21 @@
+package com.medem.service.impl;
+
+import com.medem.dto.BloodGroupDTO;
+import com.medem.service.BloodGroupService;
+
+public class BloodGroupServiceImpl implements BloodGroupService {
+    
+    @Autowired
+    private BloodGroupService bloodGroupService;
+
+    @Override
+    public BloodGroupDTO getBloodGroupById(int id) {
+        try{
+          return this.bloodGroupService.getBloodGroupById(id);
+        }
+        catch(DataAccessException dae){
+            throws new Exception e;
+        }
+    }
+
+}

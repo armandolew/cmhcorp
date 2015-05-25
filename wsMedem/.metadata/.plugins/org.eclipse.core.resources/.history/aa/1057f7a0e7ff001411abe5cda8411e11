@@ -1,0 +1,7 @@
+package com.medem.dao;
+
+public interface BloodGroupDAO {
+
+    public BloodGroup getBloodGroupById(int id); 
+    
+}

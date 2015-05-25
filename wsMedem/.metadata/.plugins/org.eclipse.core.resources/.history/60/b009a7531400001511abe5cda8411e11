@@ -1,0 +1,12 @@
+package com.medem.dao.impl;
+
+import org.springframework.stereotype.Repository;
+
+import com.medem.dao.HibernateDaoSupportWithJdbcTemplateHolder;
+
+@Repository("typeBodySystem")
+public class TypeBodySystemDAOImpl extends HibernateDaoSupportWithJdbcTemplateHolder implements TypeBodySystemDAO {
+
+    
+    
+}

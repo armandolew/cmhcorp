@@ -1,0 +1,24 @@
+package com.medem.service.impl;
+
+import org.springframework.dao.DataAccessException;
+
+import com.medem.dto.BloodGroupDTO;
+import com.medem.service.BloodGroupService;
+
+public class BloodGroupServiceImpl implements BloodGroupService {
+    
+    @Autowired
+    private BloodGroupService bloodGroupService;
+
+    @Override
+    public BloodGroupDTO getBloodGroupById(int id) throws Exception {
+        BloodGroupDTO bloodGroupDTO = null;
+        try{
+            bloodGroupDTO = this.bloodGroupService.getBloodGroupById(id);
+        }
+        catch(DataAccessException dae){
+            throw new Exception;
+        }
+    }
+
+}

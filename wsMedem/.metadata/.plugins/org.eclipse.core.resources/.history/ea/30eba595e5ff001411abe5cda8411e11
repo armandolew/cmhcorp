@@ -1,0 +1,11 @@
+package com.medem.service;
+
+import java.util.List;
+
+import com.medem.dto.CompanyActivityDTO;
+
+public interface ActivityCompanyService {
+
+    public CompanyActivityDTO getCompanyActivityById(int id);
+    public List<CompanyActivityDTO> listActivitiesFromTag(String tag);
+}

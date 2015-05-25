@@ -1,0 +1,5 @@
+package com.medem.service;
+
+public class DiagnosisService {
+
+}

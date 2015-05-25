@@ -1,0 +1,18 @@
+package com.medem.service;
+
+import java.util.List;
+
+import com.medem.dto.AreaDTO;
+import com.medem.model.Area;
+
+public interface AreaService {
+
+	public void addArea(Area area);
+	public List<AreaDTO> listAreas(int id_company);
+	public AreaDTO getAreaById(int id);
+	public Long countAreas(int id_company);
+	public void updateArea(Area area);
+	public AreaDTO getFullArea(int id);
+	public List<AreaDTO> searchArea(String name, int id_company);
+//	public void deleteArea(Area area);
+}

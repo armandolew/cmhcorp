@@ -1,0 +1,174 @@
+package com.medem.dto;
+
+import java.io.Serializable;
+
+import com.medem.model.Address;
+import com.medem.model.Area;
+import com.medem.model.Company;
+import com.medem.model.MedicalRecord;
+
+public class EmployeeDTO implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+    private int id; 
+    private String name;
+    private String lastName1;
+    private String lastName2;
+    private String dateOfBirth;
+    private int gender;
+    private int maritalStatus;
+    private String religion;
+    private int bloodGroup;
+    private int rh;
+    private String originPlace;
+    private String phone;
+    private String contactName;
+    private String contactPhone;
+    private Area area;
+    private Company company;
+    private String userName;
+    private String createdAt;
+    private Address address;
+    private MedicalRecord medicalRecord;
+    private int enabled;
+    private String avatar;
+    
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getLastName1() {
+        return lastName1;
+    }
+    public void setLastName1(String lastName1) {
+        this.lastName1 = lastName1;
+    }
+    public String getLastName2() {
+        return lastName2;
+    }
+    public void setLastName2(String lastName2) {
+        this.lastName2 = lastName2;
+    }
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+    public int getGender() {
+        return gender;
+    }
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+    public int getMaritalStatus() {
+        return maritalStatus;
+    }
+    public void setMaritalStatus(int maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
+    public String getReligion() {
+        return religion;
+    }
+    public void setReligion(String religion) {
+        this.religion = religion;
+    }
+    public int getBloodGroup() {
+        return bloodGroup;
+    }
+    public void setBloodGroup(int bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+    public int getRh() {
+        return rh;
+    }
+    public void setRh(int rh) {
+        this.rh = rh;
+    }
+    public String getOriginPlace() {
+        return originPlace;
+    }
+    public void setOriginPlace(String originPlace) {
+        this.originPlace = originPlace;
+    }
+    public String getPhone() {
+        return phone;
+    }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    public String getContactName() {
+        return contactName;
+    }
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
+    }
+    public String getContactPhone() {
+        return contactPhone;
+    }
+    public void setContactPhone(String contactPhone) {
+        this.contactPhone = contactPhone;
+    }
+    public Area getArea() {
+        return area;
+    }
+    public void setArea(Area area) {
+        this.area = area;
+    }
+    public Company getCompany() {
+        return company;
+    }
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+    public String getUserName() {
+        return userName;
+    }
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    public String getCreatedAt() {
+        return createdAt;
+    }
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+    public Address getAddress() {
+        return address;
+    }
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+    public MedicalRecord getMedicalRecord() {
+        return medicalRecord;
+    }
+    public void setMedicalRecord(MedicalRecord medicalRecord) {
+        this.medicalRecord = medicalRecord;
+    }
+    public int getEnabled() {
+        return enabled;
+    }
+    public void setEnabled(int enabled) {
+        this.enabled = enabled;
+    }
+    public String getAvatar() {
+        return avatar;
+    }
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+	
+	
+}

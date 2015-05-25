@@ -1,0 +1,307 @@
+package com.medem.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.validator.constraints.NotEmpty;
+
+
+@Entity
+@Table(name="employee")
+public class Employee {
+	
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;	
+	
+    @NotEmpty
+    @Column(name="name")
+	private String name;
+    
+    @NotEmpty
+    @Column(name="lastName1")
+	private String lastName1;
+    
+    @NotEmpty
+    @Column(name="lastName2")
+	private String lastName2;
+    
+    @NotEmpty
+    @Column(name="dateOfBirth")
+	private String dateOfBirth;
+    
+    @NotNull
+    @Column(name="gender")
+	private Integer gender;
+    
+    @Column(name="maritalStatus")
+	private Integer maritalStatus;
+    
+    @Column(name="religion")
+	private String religion;
+    
+    @NotNull
+	@Column(name="bloodGroup")
+	private Integer bloodGroup;
+	
+    @NotNull
+	@Column(name="rh")
+	private Integer rh;
+	
+	@Column(name="originPlace")
+	private String originPlace;
+	
+	@NotEmpty
+	@Column(name="phone")
+	private String phone;
+	
+	@NotEmpty
+	@Column(name="contactName")
+	private String contactName;
+	
+	@NotEmpty
+	@Column(name="contactPhone")
+	private String contactPhone;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "areaId")
+	private Area area;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "companyId")
+	private Company company;
+	
+	@NotEmpty
+	@Column(name="userName")
+	private String userName;
+
+	@Column(name="createdAt")
+	private String createdAt;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "id_address")
+	@Cascade({CascadeType.ALL})
+	private Address address;
+
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="id")
+	private MedicalRecord medicalRecord;
+	
+	@Column(name="enabled")
+	private int enabled;
+
+
+    public int getId() {
+        return id;
+    }
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public String getLastName1() {
+        return lastName1;
+    }
+
+
+    public void setLastName1(String lastName1) {
+        this.lastName1 = lastName1;
+    }
+
+
+    public String getLastName2() {
+        return lastName2;
+    }
+
+
+    public void setLastName2(String lastName2) {
+        this.lastName2 = lastName2;
+    }
+
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+
+    public Integer getGender() {
+        return gender;
+    }
+
+
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
+
+
+    public Integer getMaritalStatus() {
+        return maritalStatus;
+    }
+
+
+    public void setMaritalStatus(Integer maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
+
+
+    public String getReligion() {
+        return religion;
+    }
+
+
+    public void setReligion(String religion) {
+        this.religion = religion;
+    }
+
+
+    public Integer getBloodGroup() {
+        return bloodGroup;
+    }
+
+
+    public void setBloodGroup(Integer bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+
+
+    public Integer getRh() {
+        return rh;
+    }
+
+
+    public void setRh(Integer rh) {
+        this.rh = rh;
+    }
+
+
+    public String getOriginPlace() {
+        return originPlace;
+    }
+
+
+    public void setOriginPlace(String originPlace) {
+        this.originPlace = originPlace;
+    }
+
+
+    public String getPhone() {
+        return phone;
+    }
+
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+
+    public String getContactName() {
+        return contactName;
+    }
+
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
+    }
+
+
+    public String getContactPhone() {
+        return contactPhone;
+    }
+
+
+    public void setContactPhone(String contactPhone) {
+        this.contactPhone = contactPhone;
+    }
+
+
+    public Area getArea() {
+        return area;
+    }
+
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
+
+
+    public Company getCompany() {
+        return company;
+    }
+
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+
+    public String getUserName() {
+        return userName;
+    }
+
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+
+    public Address getAddress() {
+        return address;
+    }
+
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+
+    public MedicalRecord getMedicalRecord() {
+        return medicalRecord;
+    }
+
+
+    public void setMedicalRecord(MedicalRecord medicalRecord) {
+        this.medicalRecord = medicalRecord;
+    }
+	
+
+
+}

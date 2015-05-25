@@ -1,0 +1,6 @@
+package com.medem.dao.impl;
+
+@Repository("diagnosisDAO")
+public class DiagnosisDAOImpl {
+
+}

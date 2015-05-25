@@ -1,0 +1,24 @@
+package com.medem.service.impl;
+
+import java.util.List;
+
+import com.medem.dto.BodySystemDTO;
+import com.medem.service.BodySystemService;
+
+public class BodySystemServiceImpl implements BodySystemService {
+
+    @Override
+    @Transactional
+    public BodySystemDTO getBodySystemById(int id) {
+        
+    }
+
+    @Override
+    @Transactional
+    public List<BodySystemDTO> listBodySystems() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+    
+
+}

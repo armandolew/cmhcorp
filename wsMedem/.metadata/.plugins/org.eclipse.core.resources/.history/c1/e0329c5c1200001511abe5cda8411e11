@@ -1,0 +1,27 @@
+package com.medem.dao.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.medem.dao.DiagnosisDAO;
+import com.medem.dao.HibernateDaoSupportWithJdbcTemplateHolder;
+import com.medem.model.Diagnosis;
+
+@Repository("diagnosisDAO")
+public class DiagnosisDAOImpl extends HibernateDaoSupportWithJdbcTemplateHolder implements DiagnosisDAO {
+
+    @Autowired
+    public DiagnosisDAOImpl(HibernateTemplate hibernateTemplate) {
+        super(hibernateTemplate);
+    }
+
+    @Override
+    public List<Diagnosis> listDiagnosis() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+}

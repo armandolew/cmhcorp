@@ -1,0 +1,6 @@
+package com.medem.dao;
+
+public interface TypeBodySystemDAO {
+
+    public List<TypeBodySystem> listTypeBodysystem();
+}

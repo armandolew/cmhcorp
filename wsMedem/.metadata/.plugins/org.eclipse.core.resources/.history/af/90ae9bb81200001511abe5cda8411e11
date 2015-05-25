@@ -1,0 +1,23 @@
+package com.medem.service.impl;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.medem.dto.DiagnosisDTO;
+import com.medem.service.DiagnosisService;
+
+@Service("diagnosisService")
+public class DiagnosisServiceImpl implements DiagnosisService {
+
+    @Autowired
+    private DiagnosisDAO diagnosisDAO;
+    
+    @Override
+    @Transactional
+    public List<DiagnosisDTO> listDiagnosis() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+}

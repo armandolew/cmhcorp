@@ -1,0 +1,8 @@
+package com.medem.dao;
+
+public interface BodySystemDAO {
+    
+    public BodySystem getBodySystemById(int id);
+    public List<BodySystem> listBodySystems();
+
+}

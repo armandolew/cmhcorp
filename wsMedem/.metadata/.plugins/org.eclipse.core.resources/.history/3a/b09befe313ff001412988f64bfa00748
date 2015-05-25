@@ -1,0 +1,211 @@
+        	body{
+        		background-color: #F3F5F6;
+        		margin-bottom: 60px;
+        	}
+        	
+        	html {
+  				position: relative;
+  				min-height: 100%;
+			}
+        	
+        	.navbar{
+        	  border: 0!important;
+        	  border-radius: 0!important;
+        	}
+        	.navbar-default{
+        		background-color: #303946!important;
+        	}
+        	.navbar-default .navbar-nav > li > a{
+        		color: #8b929a!important;
+        	}
+        	.navbar-default .navbar-nav > li > a:hover{
+        		color: #fff !important;
+        	}
+        	.navbar-default .navbar-nav > .active > a,
+        	.navbar-default .navbar-nav > .active > a:focus,
+        	.navbar-default .navbar-nav > .open > a{
+        		background-color: #455264!important;
+        		color: #fff!important;
+        	}
+        	
+        	footer {
+  				position: absolute;
+  				bottom: 0;
+  				width: 100%;
+				height: 50px;
+  				background-color: #303946;
+			}
+        	
+        	.panel-employees{
+        		background-color: #29B6D8;
+        		color: #fff;
+        	}
+        	.panel-areas{
+        		background-color: #F4AD49;
+        		color: #fff;
+        	}        	
+        	.panel-records{
+        		background-color: #66C796;
+        		color: #fff;
+        	}
+        	.panel-employees, .panel-areas, .panel-records{
+        		min-height: 88px;
+        	}
+        	.panel-employees .glyphicon, .panel-areas .glyphicon, .panel-records .glyphicon {
+    			font-size: 50px;
+			}
+			.tab-pane .form{
+				border-top: 0!important;
+			}
+			.form_separator{
+				height: 1px;
+				width: 100%;
+				margin: 14px auto;
+				border-top: 1px solid #E3E3E3;
+			}
+			.profile {
+  				margin: 20px 0;
+			}
+			.profile-sidebar {
+			  	padding: 20px 0;
+			  	background: #303946;
+			  	margin-bottom: 14px;
+			  	height: 404px;
+			}		
+			.profile-userpic img {
+			  	float: none;
+			  	margin: 0 auto;
+			  	width: 50%;
+			  	height: 50%;
+			  	max-height: 120px;
+			  	-webkit-border-radius: 50% !important;
+			  	-moz-border-radius: 50% !important;
+			  	border-radius: 50% !important;
+			}		
+			.profile-usertitle {
+			  	text-align: center;
+			  	margin-top: 20px;
+			}
+
+			.profile-usertitle-name {
+			  	color: #fff;
+			  	font-size: 16px;
+			  	font-weight: 400;
+			  	margin-bottom: 7px;
+			}
+
+			.profile-usertitle-job {
+			  	text-transform: uppercase;
+			  	color: #29B6D8;
+			  	font-size: 12px;
+			  	font-weight: 600;
+			  	margin-bottom: 15px;
+			}	
+						
+			.profile-sidebar .divider{
+				width: 80%!important;
+
+			}
+			
+			.profile-userbuttons .btn{
+				margin-bottom: 7px;
+			}
+			
+			.profile-creation{
+				text-align: left !important;
+				margin: 0 20%;
+			}
+
+			.table > tbody > tr > td, 
+			.table > tbody > tr > th, 
+			.table > tfoot > tr > td, 
+			.table > tfoot > tr > th, 
+			.table > thead > tr > td, 
+			.table > thead > tr > th{
+				font-size: 14px!important;
+			}		
+			.info-block .square-box{
+				min-height: 110px;
+				padding: 25px 0;
+				text-align: center !important;
+				width: 100px;
+				margin-right: 20px;
+			}
+			.info-block.block-info .square-box{
+				color: #fff;
+				font-size: 4em;
+			}
+			#workBackground .square-box{
+				background-color: #29B6D8;
+			}
+			
+			#familyHistory .square-box{
+				background-color: #66C796;
+			}			
+
+			ul{
+				list-style: none;
+			}
+			
+			li.workbackground{
+				margin-bottom: 14px;
+			}
+			
+			.modal-content > .modal-header-info{
+				background-color: #F4AD49!important; 
+				color: #fff; 
+			}
+			
+			.form-control{
+			   border-radius: 0!important;
+			}
+			
+			.progress{
+				height: 4px;
+				background-color: rgba(0, 0, 0, 0.28);
+			}
+			.progress .progress-bar-white{
+				background-color: #fff;
+			}
+			
+			#logoutForm{
+				display: none;
+			}
+
+			.ui-menu .ui-menu-item{
+				background-color: #303946!important;
+				list_style-image: none !important;
+				color: #fff;
+			}
+			.ui-menu .ui-menu-item:hover{
+				background-image: none !important;
+				background-color: #455264;
+				color: #fff;
+			}
+			.ui-autocomplete-loading{
+				background: url("<c:url value='/medem/imgs/ajax-loader.gif'/>'") no-repeat 0 center;
+			}
+			
+			@media screen and (max-width: 300px){
+				.profile-sidebar {
+				  	height: 300px!important;
+				}
+			
+			}
+			
+			@media screen and (max-width: 999px){
+				.profile-userpic img {
+				  	height: 50%;
+				  	width: 20%;
+				}
+			
+			}	
+			
+			@media screen and (min-device-width: 200px) and (max-device-width: 600px){
+				.profile-userpic img {
+				  	height: 40%;
+				  	width: 25%;
+				}
+			
+			}		
+		
