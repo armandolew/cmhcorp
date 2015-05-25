@@ -23,22 +23,7 @@
 
 			<jsp:include page="layouts/navigation_layout.jsp"></jsp:include>	
 			
-			<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			  <div class="modal-dialog">
-			    <div class="modal-content">
-			      <div class="modal-header modal-header-danger">
-			        Atención
-			      </div>
-			      <div class="modal-body">
-			        ¿Está seguro que quiere eliminar el registro?
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-			        <a class="btn btn-danger btn-ok">Eliminar</a>
-			      </div>
-			    </div>
-			  </div>
-			</div>				
+			<jsp:include page="layouts/modal_delete_layout.jsp"></jsp:include>			
  
 			<div class="container">
 			  <div class="col-md-12">
@@ -53,7 +38,7 @@
 		                  <div class="row">
 		                    <div class="col-sm-8">
 		                      <input type="text" class="form-control" id="search" name="search" placeholder="Introduzca informaci&#243;n a buscar" />
-		                      <input type="hidden" name="companyId" value="${company.id }" />
+		                      <input type="hidden" name="companyId" value="${id_company }" />
 		                      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 		                    </div><!-- .col-sm-4 -->
 		                    <div class="col-sm-4">
@@ -66,7 +51,7 @@
 		                
 		                <hr class="divider">
 		                
-		                <a href="/medem/newArea/${company.id}" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Agregar área</a>
+		                <a href="/medem/newArea/${id_company}" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Agregar área</a>
 		                
 		                <hr class="divider">
 		                
@@ -126,34 +111,13 @@
 			  </div>
 			</div> 	
 			
-			<jsp:include page="layouts/footer_layout.jsp"></jsp:include>		
+			<jsp:include page="layouts/footer_layout.jsp"></jsp:include>
+
+		   <c:if test="${not empty message }" >
+      		<script>
+        		showMessage("${message}", "danger", "#myModal");
+      		</script>
+    	   </c:if>	
  
     </body>
-    
-    <script>
-      $("#confirm-delete").on("show.bs.modal", function(e) {
-        $(this).find(".btn-ok").attr("href", $(e.relatedTarget).data("href"));
-      });
-      
-	  //Form validation 
-	  $validator = $("#searchForm").validate({
-	    rules:{
-	    	search: {
-	    	  minlength: 2,
-              required: true
-	    	}
-	    },
-	  	messages: {
-	  		search: "Por favor, introduzca el <b>termino a buscar</b>."
-	  	},
-		highlight: function (element) {
-            $(element).closest("div").addClass('has-error');
-	    },
-	    submitHandler: function(form) { 
-	      	form.submit(); 
-	    }    	    
-	  });
-		  
-		//Form validation      
-    </script>    
   </html>

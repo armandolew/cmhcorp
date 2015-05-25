@@ -107,9 +107,8 @@
 	                                <div class="row">
 	                                  <div class="col-sm-3">
 	                                    <div class="form-group">
-	                                       <form:label path="bloodGroup">Grupo sanguineo<span style="color:red;">*</span></form:label>
-	                                       <form:select path="bloodGroup" id="bloodGroup" data-name="Grupo sanguineo" class="form-control required-select" tabindex="8">
-	                                         <form:option value="">Grupo sanguineo</form:option>
+	                                       <form:label path="bloodGroup.id">Grupo sanguineo<span style="color:red;">*</span></form:label>
+	                                       <form:select path="bloodGroup.id" data-name="Grupo sanguineo" class="form-control required-select" tabindex="8">
 	                                         <form:option value="1">A</form:option>
 	                                         <form:option value="2">B</form:option>
 	                                         <form:option value="3">AB</form:option>
@@ -158,8 +157,8 @@
 	                                  </div><!-- .col-sm-3 -->	 
 	                                  <div class="col-sm-2">
 	                                    <div class="form-group">
-	                                      <form:label path="address.zipCode">C&#243;digo postal</form:label>
-	                                      <form:input path="address.zipCode" name="zipCode" type="text" id="zipCode" class="form-control required-text" placeholder="Código postal" tabindex="14"/>
+	                                      <form:label path="address.zipcode">C&#243;digo postal</form:label>
+	                                      <form:input path="address.zipcode" type="text" class="form-control required-text" placeholder="Código postal" tabindex="14"/>
 	                                    </div><!-- .form-group -->                          
 	                                  </div><!-- .col-sm-2 -->	                                                                   	                                                                  
 	                                </div><!--  .row -->
@@ -188,7 +187,6 @@
 	                                   <div class="form-group">
 										 <form:label path="area.id">Area<span style="color:red;">*</span></form:label>
 	                                     <form:select path="area.id" name="area.id" class="form-control required-select" data-name="Area" tabindex="17">
-	                                       <form:option value="">Area</form:option>
 		   								   <form:options items="${listAreas}" itemValue="id" itemLabel="name" />
 	                                     </form:select><!-- .form-control -->
 	                                   </div><!-- .form-control -->                          
@@ -197,14 +195,13 @@
 	                                
 	                                <hr class="divider">
 	                                
-	                                <form:hidden path="id" />
-	                                <form:hidden path="userName" />
-	                                <form:hidden path="enabled" />
-	                                <form:hidden path="avatar" />
-	                                <form:hidden path="company.id" />
-	                                <form:hidden path="createdAt" />
-	    
-	                                
+	                                <form:hidden path="id" value="${Employee.id }" />
+	                                <form:hidden path="createdAt" value="${Employee.createdAt}" />
+	                                <form:hidden path="createdBy" value="${Employee.createdBy}" />
+	                                <form:hidden path="company.id" value ="${Employee.company.id}" /> 
+	                                <form:hidden path="enabled" value="${Employee.enabled }" />
+	                                <form:hidden path="profileImage" value="${Employee.profileImage }" />
+	                                	                                
 	                                <input type="submit" class="btn btn-block btn-primary" value="Actualizar Ficha de Identificación" tabindex="18" />
                                 
                                 	</form:form>

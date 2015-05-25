@@ -42,8 +42,9 @@
 		                    </div><!--. form-group input-group -->
 		                    
 		                    <form:hidden path="createdAt" value="2015-05-22 12:52:33"></form:hidden>
-		                    <form:hidden path="createdBy" value="${userName}"></form:hidden> 
+		                    <form:hidden path="createdBy" value="${user.name}"></form:hidden> 
 		                    <form:hidden path="company.id" value="${id_company}"></form:hidden>
+		                    <form:hidden path="enabled" value="true"></form:hidden>
 		                    
 		                    <input type="submit" class="btn btn-block btn-primary" tabindex="2" value="Crear Nueva Area">
 		                  </form:form><!-- .form -->              			

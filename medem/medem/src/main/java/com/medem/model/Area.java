@@ -46,9 +46,7 @@ public class Area implements Serializable{
     //@OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
     @OneToOne(fetch = FetchType.LAZY)
     private Company company;
-    
-    @NotNull
-    @Column(name="enabled")
+
     private Boolean enabled;
 
     public int getId() {

@@ -22,22 +22,7 @@
  
 			<jsp:include page="layouts/navigation_layout.jsp"></jsp:include>
 			
-			<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			  <div class="modal-dialog">
-			    <div class="modal-content">
-			      <div class="modal-header modal-header-danger">
-			        Atención
-			      </div>
-			      <div class="modal-body">
-			        ¿Está seguro que quiere eliminar el registro?
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-			        <a class="btn btn-danger btn-ok">Eliminar</a>
-			      </div>
-			    </div>
-			  </div>
-			</div>			
+			<jsp:include page="layouts/modal_delete_layout.jsp"></jsp:include>		
 			
 			<div class="container">
 			  <div class="col-md-12">

@@ -104,7 +104,7 @@ public class Employee implements Serializable{
 	@NotNull
     @JoinColumn(name ="id_company", referencedColumnName = "id", nullable = false)
     //@OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.LAZY)
     private Company company;
 	
 	@NotNull

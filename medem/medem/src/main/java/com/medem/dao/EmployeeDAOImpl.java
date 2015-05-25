@@ -35,6 +35,7 @@ public class EmployeeDAOImpl extends HibernateDaoSupportWithJdbcTemplateHolder i
 //    	return result;
         Criteria criteria = getHibernateTemplate().getSessionFactory().getCurrentSession().createCriteria(Employee.class);
         criteria.add(Restrictions.eq("company.id", id_company));
+        criteria.add(Restrictions.eq("enabled", true));
         criteria.setFirstResult((page - 1) * recordsPerPage);
         criteria.setMaxResults(recordsPerPage);
         

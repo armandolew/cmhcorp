@@ -68,7 +68,7 @@ public class AreaController {
 	    
 	    model.addObject("Area", new Area());
 	    model.addObject("id_company", id_company);
-	    model.addObject("userName", user.getUsername());
+	    model.addObject("user", user);
 	    model.setViewName("newArea");
 	    
 	    return model;
@@ -83,28 +83,27 @@ public class AreaController {
 
         User user = Assembler.createUser(userService.getUserByName(userDetails.getUsername())); 
         
-        logger.info("CREADO: " + area.getCreatedAt());
-        
-        if(result.hasErrors()){
-          model.addObject("message", result.getFieldError());
-          model.addObject("Area", area);
-          model.addObject("id_company", area.getCompany());
-          model.addObject("userName", user.getUsername());   
-          model.setViewName("newArea");
+        try{
+            if(result.hasErrors()){
+                model.addObject("message", errorsHelper.getErrorMessages(result.getFieldErrors()));
+                model.addObject("Area", area);
+                model.addObject("id_company", area.getCompany());
+                model.addObject("user", user);   
+                model.setViewName("newArea");
+                logger.error(errorsHelper.getErrorMessages(result.getFieldErrors()));
+            }
+            else{
+                Company company = (Company) Assembler.createCompany(companyService.getCompanyById(area.getCompany().getId()));
+                area.setCompany(company);
+                areaService.addArea(area);
+                model.setViewName("redirect:/areas/" + company.getId());
+                logger.info("AREA :: Adding new area :: User: " + user.getUsername() + " :: " + LocalTime.now());
+            }
         }
-        else{
-          try{
-            Company company = (Company) Assembler.createCompany(companyService.getCompanyById(area.getCompany().getId()));
-            area.setCompany(company);
-            areaService.addArea(area);
-            model.setViewName("redirect:/areas/" + company.getId());
-            logger.info("AREA :: Adding new area :: User: " + user.getUsername() + " :: " + LocalTime.now());
-          }
-          catch(Exception e){
+        catch(Exception e){
             model.addObject("message", e.getMessage());
             model.setViewName("newArea");
-            logger.error(e.getMessage());
-          }
+            logger.error(e.getMessage());            
         }
         
         return model;
@@ -128,7 +127,8 @@ public class AreaController {
             logger.error(e.getMessage());
         }
         
-        model.addObject("userName", user.getUsername());
+        model.addObject("user", user);
+        model.addObject("id_company", id_company);
         model.setViewName("indexArea");
         return model;
     }
@@ -151,7 +151,7 @@ public class AreaController {
             logger.error(e);
         }
         
-        model.addObject("userName", user.getUsername());
+        model.addObject("user", user);
         model.setViewName("editArea");
         return model;
     }
@@ -165,23 +165,28 @@ public class AreaController {
 
         User user = Assembler.createUser(userService.getUserByName(userDetails.getUsername()));
         
-        if(result.hasErrors()){
-            model.addObject("message", errorsHelper.getErrorMessages(result.getFieldErrors()));
-            model.addObject("Area", area);
-            model.setViewName("editArea");
+        try{
+            if(result.hasErrors()){
+                model.addObject("message", errorsHelper.getErrorMessages(result.getFieldErrors()));
+                model.addObject("Area", area);
+                model.addObject("user", user);   
+                model.setViewName("editArea");
+                logger.error(errorsHelper.getErrorMessages(result.getFieldErrors()));                
+            }
+            else{
+                logger.info(area.toString());
+                areaService.updateArea(area);
+                model.setViewName("redirect:/areas/" + area.getCompany().getId());
+                logger.info("AREA :: Updating area :: User: " + user.getUsername() + " :: " + LocalTime.now());
+            }
         }
-        else{
-          try{
-            areaService.updateArea(area);
-            model.setViewName("redirect:/areas/" + area.getCompany().getId());
-            logger.info("AREA :: Updating area :: User: " + user.getUsername() + " :: " + LocalTime.now());
-          }
-          catch(Exception e){
+        
+        catch(Exception e){
             model.addObject("message", e.getMessage());
             model.addObject("Area", area);
+            model.addObject("user", user); 
             model.setViewName("editArea");
             logger.error(e);
-          }
         }
         
         return model;
@@ -199,7 +204,7 @@ public class AreaController {
         try{
             model.addObject("listAreas", areaService.searchArea(search, id_company));
             model.addObject("company", companyService.getCompanyById(id_company));
-            model.addObject("userName", user.getUsername());
+            model.addObject("user", user);
         }
         catch(Exception e){
             model.addObject("message", e.getMessage());
@@ -214,11 +219,18 @@ public class AreaController {
     public ModelAndView deleteAreaPage(@PathVariable(value = "id") int areaId){
         ModelAndView model = new ModelAndView();
         BasicConfigurator.configure();
+        UserDetails userDetails =
+                (UserDetails) authenticationFacadeImpl.getAutentication().getPrincipal();
+
+        User user = Assembler.createUser(userService.getUserByName(userDetails.getUsername()));
+        
         int companyId = 0;
         try{
-            areaService.deleteArea(Assembler.createArea(areaService.getAreaById(areaId)));
-            Assembler.createArea(areaService.getFullArea(areaId)).getCompany().getId();
-            logger.info("USER deleting area " + areaId);
+            Area areaToDelete = (Area) Assembler.createArea(areaService.getFullArea(areaId));
+            areaService.deleteArea(areaToDelete);
+            
+            companyId = areaToDelete.getCompany().getId();
+            logger.info("AREA :: Deleting area :: User: " + user.getUsername() + " :: " + LocalTime.now());
         }
         catch(Exception e){
             logger.error(e);

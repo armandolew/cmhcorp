@@ -86,8 +86,8 @@
 	                                  </div><!-- .col-sm-2 -->
 	                                  <div class="col-sm-3">
 	                                    <div class="form-group">
-	                                       <form:label path="maritalStatus">Estado civil</form:label>
-	                                       <form:select path="maritalStatus" id="maritalStatus" data-name="Estado civil" class="form-control" tabindex="6">
+	                                       <form:label path="maritalStatus">Estado civil <span style="color:red;">*</span></form:label>
+	                                       <form:select path="maritalStatus" id="maritalStatus" data-name="Estado civil" class="form-control required-select" tabindex="6">
 	                                         <form:option value="">Estado civil</form:option>
 	                                         <form:option value="1">Soltero</form:option>
 	                                         <form:option value="2">Casado</form:option>
@@ -200,8 +200,8 @@
 	                                <hr class="divider"> 
 	                                
 	                                <form:hidden path="createdAt" value="2015-05-22" />
-	                                <form:hidden path="createdBy" value="${userName}" />
-	                                <form:hidden path="company.id" value ="${companyId }" />                               	                                
+	                                <form:hidden path="createdBy" value="${user.username}" />
+	                                <form:hidden path="company.id" value ="${user.company.id}" />                               	                                
 	                                
 	                                <input type="submit" class="btn btn-block btn-primary" value="Generar Ficha de Identificación" tabindex="18" />
                                 

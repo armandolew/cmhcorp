@@ -18,7 +18,9 @@
 
     <body id="indexEmployees">
 
-			<jsp:include page="layouts/navigation_layout.jsp"></jsp:include> 		
+			<jsp:include page="layouts/navigation_layout.jsp"></jsp:include> 
+			
+			<jsp:include page="layouts/modal_layout.jsp"></jsp:include>		
  
 			<div class="container">
 			  <div class="col-md-12">
@@ -53,7 +55,7 @@
 						        <li class="list-group-item clearfix">
 						          <div class="media">
 						            <div class="pull-left">
-						              <img src="${employee.avatar }"  />
+						              <img src="${employee.profileImage }"  />
 						            </div>
 							        <div class="media-body">
 							          <h3 class="media-heading">
@@ -81,7 +83,13 @@
 			      </div>
 			    </div>
 			  </div>
-			</div> 			
+			</div> 	
+			
+	    <c:if test="${!empty message }">
+	      <script>
+	        showMessage("${message}", "info", "#myModal");
+	      </script>
+	    </c:if>					
  
     </body>
   </html>

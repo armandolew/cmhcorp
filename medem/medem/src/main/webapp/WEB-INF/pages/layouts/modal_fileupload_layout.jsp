@@ -14,7 +14,7 @@
 						</div>
 						<form method="POST" id="fileUploadForm" action="/medem/saveFile?_csrf=${_csrf.token}" enctype="multipart/form-data">
 							<input type="file" name="file" />
-						    <input type="hidden" name="employeeId" value="${employeeId }" />
+						    <input type="hidden" name="employeeId" value="${id}" />
 						    <div class="form_divider"></div>
 							<input type="submit" class="btn btn-primary btn-block" value="Subir" />
 						</form><!--  form -->

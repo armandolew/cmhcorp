@@ -8,9 +8,6 @@ import org.joda.time.PeriodType;
 
 public class EmployeeHelper {
 
-//	public String getAreaName(int area){
-//
-//	}
 	
 	public String getGender(int gender){
 		String employeeGender;
@@ -64,6 +61,7 @@ public class EmployeeHelper {
 	}
 	
 	public int getEmployeeAge(Date dateOfBirth){
+	    System.out.println(dateOfBirth);
 		LocalDate dateOfBirthLD = new LocalDate(dateOfBirth.getYear(), dateOfBirth.getMonth(), dateOfBirth.getDay());
 		LocalDate currentDateLD = LocalDate.now();
 		

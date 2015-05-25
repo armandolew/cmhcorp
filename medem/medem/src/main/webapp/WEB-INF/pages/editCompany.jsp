@@ -10,9 +10,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
       <script src="/medem/bootstrap/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
-      <script type='text/javascript' src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
-	  <script type='text/javascript' src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/additional-methods.js"></script>
-	  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+      <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	  <script src="/medem/js/main_functions.js" ></script>
 	  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
       <link href="/medem/bootstrap/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -52,19 +50,19 @@
                 <form:form action="/medem/updateCompany" method="POST" modelAttribute="company" id="editCompanyForm">
                   <div class="form-group">
                     <form:label path="name">Nombre de la empresa</form:label>
-                    <form:input path="name" class="form-control" value="${company.name}" tabindex="1" />
+                    <form:input path="name" class="form-control required-text" value="${company.name}" placeholder="Nombre de la empresa" tabindex="1" />
                   </div><!-- .form-group -->
                   <div class="form-group">
                     <form:label path="bussinesName">Razón social</form:label>
-                    <form:input path="bussinesName" class="form-control" value="${company.bussinesName}" tabindex="2" />
+                    <form:input path="bussinesName" class="form-control required-text" value="${company.bussinesName}" placeholder="Razón social" tabindex="2" />
                   </div><!-- .form-group -->
                   <div class="form-group">
                     <form:label path="employeeRegistration">Registro patronal</form:label>
-                    <form:input path="employeeRegistration" class="form-control" value="${company.employeeRegistration}" tabindex="3" />
+                    <form:input path="employeeRegistration" class="form-control required-text" value="${company.employeeRegistration}" placeholder="Registro patronal" tabindex="3" />
                   </div><!-- .form-group -->
    				  <div class="form-group">
    				    <label for="activitySelect">Giro/actividad</label>
-   				    <input name="activitySelect" id="activitySelect" class="form-control" value="${company.activity.activity}" tabindex="4" />
+   				    <input name="activitySelect" id="activitySelect" class="form-control required-text" value="${company.activity.activity}" placeholder="Giro/Actividad" tabindex="4" />
    				    <form:hidden path="activity.id" id="activity.id" value="${company.activity.id }" />
    				  </div><!-- .form-group -->
                   <div class="form-group">
@@ -78,6 +76,7 @@
                   <form:hidden path="createdAt" value="${company.createdAt }" />
                   <form:hidden path="enabled" value="${company.enabled }" />
                   <form:hidden path="id" value="${company.id }" />
+                  
                   <div class="form-group">
                     <input type="submit" class="btn btn-block btn-primary" value="Editar Empresa" tabindex="5" />
                   </div><!-- .form-group -->

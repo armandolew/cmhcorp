@@ -47,8 +47,8 @@ public class FileUploadController {
 	       String directory = "/home/indigo/Documentos/";
 	       String imageApplicationDirectory = "/medem/employee/images/";
 	       Employee employee = Assembler.createEmployee(employeeService.getEmployeeById(employeeId));
-	       String newFileName = directory + "medem-employee-" + employee.getId() + employee.getName() + "." + FilenameUtils.getExtension(file.getOriginalFilename());
-	       String newAppFileName = imageApplicationDirectory + "medem-employee-" + employee.getId() + employee.getName() + "." + FilenameUtils.getExtension(file.getOriginalFilename());
+	       String newFileName = directory + "medem-employee-" + employee.getId() + "." + FilenameUtils.getExtension(file.getOriginalFilename());
+	       String newAppFileName = imageApplicationDirectory + "medem-employee-" + employee.getId() + "." + FilenameUtils.getExtension(file.getOriginalFilename());
 	       employee.setProfileImage(newAppFileName);
 	       employeeService.updateEmployee(employee);
 	       file.transferTo(new File(newFileName));

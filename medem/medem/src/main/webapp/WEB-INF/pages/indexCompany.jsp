@@ -79,7 +79,7 @@
 		                          <c:forEach items="${listCompanies}" var="company">
 		                            <tr>
 		                              <td><a href="company/${company.id}">${company.name}</a></td>
-		                              <td>${company.businessName}</td>
+		                              <td>${company.bussinesName}</td>
 		                              <td>${company.employeeRegistration}</td>
 		                            </tr>
 		                          </c:forEach>                                              

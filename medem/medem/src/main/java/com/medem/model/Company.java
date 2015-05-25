@@ -136,14 +136,14 @@ public class Company implements Serializable{
         this.main_doctor = main_doctor;
     }
     
-    @Override
-    public String toString(){
-        return "Company: { "
-               + "name: " + name
-               + ", businessName: " + bussinesName
-               + ", employeeRegistration: " + employeeRegistration
-               + ", activity: " + activity
-               + ", main_doctor: " + main_doctor
-               + "}";
-    }
+//    @Override
+//    public String toString(){
+//        return "Company: { "
+//               + "name: " + name
+//               + ", businessName: " + bussinesName
+//               + ", employeeRegistration: " + employeeRegistration
+//               + ", activity: " + activity
+//               + ", main_doctor: " + main_doctor
+//               + "}";
+//    }
 }

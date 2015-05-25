@@ -38,7 +38,7 @@ public class AreaDAOImpl extends HibernateDaoSupportWithJdbcTemplateHolder imple
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Area> listAreas(int id_company){
-		Query listQuery = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from Area area where area.company.id ='" + id_company + "' order by area.name ASC");
+		Query listQuery = getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from Area area where area.company.id ='" + id_company + "' and area.enabled = true order by area.name ASC");
 		
 		return listQuery.list();
 	}

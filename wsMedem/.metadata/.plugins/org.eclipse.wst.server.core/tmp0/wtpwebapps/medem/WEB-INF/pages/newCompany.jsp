@@ -46,7 +46,7 @@
                   </div><!-- .form-group -->
                   <div class="form-group">
                     <form:label path="employeeRegistration">Registro patronal</form:label>
-                    <form:input path="employeeRegistration" class="form-control" placeholder="Registro patronal" tabindex="3" />
+                    <form:input path="employeeRegistration" class="form-control required-text" placeholder="Registro patronal" tabindex="3" />
                   </div><!-- .form-group -->
 		          <div class="form-group">
 		            <label for="activitySelect">Giro/actividad</label>

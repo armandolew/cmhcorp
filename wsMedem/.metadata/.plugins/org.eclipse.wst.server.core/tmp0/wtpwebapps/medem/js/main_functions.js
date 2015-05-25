@@ -202,7 +202,7 @@ loadEmployeeInformation = function(employeeId){
 			$(".profile-usertitle-name").html(data.name + " " + data.lastName1 + " " + data.lastName2);
 			$(".profile-usertitle-job").html(data.areaName);
 			if(data.avatar != ""){
-				$(".profile-userpic img").attr("src",data.avatar);
+				$(".profile-userpic img").attr("src",data.profileImage);
 			}
 			$("#employeeShow .container .employeeInfo").fadeIn("slow");
 			$("#myModal").modal("hide");
@@ -273,6 +273,20 @@ $(document).ready(function(){
 		
 	});	
 	// newAreaForm validation
+	
+	// editAreaForm validation
+	$("#editAreaForm").on("submit", function(event){
+		event.preventDefault();
+		var formValidation = validateForm("#editAreaForm");
+		
+		if(formValidation){
+			console.log("ready to send");
+			showMessage("Procesando ...", "success", "#myModal");
+			document.getElementById("editAreaForm").submit();
+		}
+		
+	});	
+	// editAreaForm validation	
 	
 	// newCompanyForm validation
 	$("#newCompanyForm").on("submit", function(event){

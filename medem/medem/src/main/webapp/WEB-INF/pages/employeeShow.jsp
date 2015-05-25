@@ -36,10 +36,10 @@
 			    <div class="row">
 	            	<ul class="nav nav-tabs">
 	                	<li class="active"><a href="#">Ficha de Identificaci&#243;n</a></li>
-	                	<li><a href="/medem/familyHistory?id=${employeeId}">Ant. Heredofamiliares</a></li>
-	                	<li><a href="/medem/medicalRecord?id=${employeeId}">Historia Clinica</a></li>
-	                	<li><a href="/medem/medicalExam?id=${employeeId}">Examenes</a></li>
-	                	<li><a href="/medem/medicalNote?id=${employeeId}">Notas</a></li>                
+	                	<li><a href="/medem/familyHistory?id=${id}">Ant. Heredofamiliares</a></li>
+	                	<li><a href="/medem/medicalRecord?id=${id}">Historia Clinica</a></li>
+	                	<li><a href="/medem/medicalExam?id=${id}">Examenes</a></li>
+	                	<li><a href="/medem/medicalNote?id=${id}">Notas</a></li>                
 	              	</ul><!-- .nav nav-tabs -->
 	              	
 	              	<div class="tab-content">
@@ -63,8 +63,8 @@
 								    <div class="btn-group-vertical">
 								      <a href="#" data-toggle="modal" data-target="#fileUpload" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-upload"></span> Subir Foto</a>
 								      <security:authorize access="hasRole('ROLE_ADMIN')">
-								      <a href="/medem/editEmployee/${employeeId}" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit"></span> Editar</a>
-								      <a href="#" data-href="/medem/deleteEmployee/${employeeId }" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirm-delete"><span class="glyphicon glyphicon-remove-circle"></span> Eliminar</a>
+								      <a href="/medem/editEmployee/${id}" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+								      <a href="#" data-href="/medem/deleteEmployee/${id }" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirm-delete"><span class="glyphicon glyphicon-remove-circle"></span> Eliminar</a>
 								      </security:authorize>
 								    </div><!-- .btn-group-vertical -->
 								  </div>									  

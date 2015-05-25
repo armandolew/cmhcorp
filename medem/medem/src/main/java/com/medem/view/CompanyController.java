@@ -8,7 +8,7 @@ import javax.validation.Valid;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
-import org.joda.time.LocalDateTime;
+import org.joda.time.LocalTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -103,7 +103,6 @@ public class CompanyController{
 		
 		ModelAndView model = new ModelAndView();
 		BasicConfigurator.configure();
-		LocalDateTime localDateTime = new LocalDateTime();
 		
         UserDetails userDetails =
                 (UserDetails) authenticationFacadeImpl.getAutentication().getPrincipal();
@@ -111,18 +110,15 @@ public class CompanyController{
         User user = Assembler.createUser(userService.getUserByName(userDetails.getUsername())); 
 		
 		try{
-
-			
 			model.addObject("usersAvailable", userService.listUsers());
 			model.addObject("company", new Company());
-			model.addObject("userName", user.getUsername());
-			model.setViewName("newCompany");
-			logger.info("Generando nueva empresa por: " + userDetails.getUsername() + "-" + localDateTime);
 		}
 		catch(Exception e){
-			logger.error("newCompany Exception: " + e);
+		    model.addObject("message", e.getMessage());
+			logger.error(e);
 		}
-		
+		model.addObject("user", user);
+        model.setViewName("newCompany");
 		return model;
 	}
 	
@@ -155,32 +151,38 @@ public class CompanyController{
         ModelAndView model = new ModelAndView();
         BasicConfigurator.configure();
         
-        if(result.hasErrors()){
-          model.addObject("message", errorsHelper.getErrorMessages(result.getFieldErrors()));
-          model.addObject("usersAvailable", userService.listUsers());
-          model.addObject("company", company);
-          model.setViewName("newCompany");
-          logger.error(result.getAllErrors());
-        }
-        else{
-            try{
-                ActivityCompany activityCompany = Assembler.createActivityCompany(activityCompanyService.getActivityCompanyById(company.getActivity().getId()));
-                company.setActivity(activityCompany);
-                company.setEnabled(true);
-                
-                logger.info(company.toString());
-                
-                companyService.addCompany(company);
-                model.setViewName("redirect:/company/" + company.getId()); 
-                logger.info("agregando empresa");
-            }
-            catch(Exception e){
-                model.addObject("message", e.getMessage());
-                model.addObject("company", company);
+        UserDetails userDetails =
+                (UserDetails) authenticationFacadeImpl.getAutentication().getPrincipal();
+
+        User user = Assembler.createUser(userService.getUserByName(userDetails.getUsername()));         
+        
+        try{
+            if(result.hasErrors()){
+                model.addObject("message", errorsHelper.getErrorMessages(result.getFieldErrors()));
                 model.addObject("usersAvailable", userService.listUsers());
+                model.addObject("company", company);
+                model.addObject("user", user);
                 model.setViewName("newCompany");
-                logger.error(e.getMessage());
-            }
+                logger.error(errorsHelper.getErrorMessages(result.getFieldErrors()));
+              }
+              else{
+                  ActivityCompany activityCompany = Assembler.createActivityCompany(activityCompanyService.getActivityCompanyById(company.getActivity().getId()));
+                  company.setActivity(activityCompany);
+                  company.setEnabled(true);
+                  
+                  companyService.addCompany(company);
+                  model.setViewName("redirect:/company/" + company.getId());
+                  logger.info("USER: " + user.getUsername() + "creating new company :: " + LocalTime.now());
+              }
+            
+        }
+        catch(Exception e){
+            model.addObject("message", e.getMessage());
+            model.addObject("company", company);
+            model.addObject("usersAvailable", userService.listUsers());
+            model.addObject("user", user);
+            model.setViewName("newCompany");
+            logger.error(e.getMessage());
         }
         
         
@@ -199,6 +201,12 @@ public class CompanyController{
    public ModelAndView companyPage(@PathVariable(value = "id") int id){
        ModelAndView model = new ModelAndView();
        BasicConfigurator.configure();
+       
+       UserDetails userDetails =
+               (UserDetails) authenticationFacadeImpl.getAutentication().getPrincipal();
+
+       User user = Assembler.createUser(userService.getUserByName(userDetails.getUsername()));
+       
        try{
            Company company = Assembler.createCompany(companyService.getFullCompany(id));
            model.addObject("company", company);
@@ -206,6 +214,8 @@ public class CompanyController{
        catch(Exception e){
            logger.error(e);
        }
+       
+       model.addObject("user", user);
        model.setViewName("showCompany");
        return model;
    }
@@ -221,15 +231,23 @@ public class CompanyController{
    public ModelAndView editCompanyPage(@PathVariable(value ="id") int id){
        ModelAndView model = new ModelAndView();
        BasicConfigurator.configure();
+       
+       UserDetails userDetails =
+               (UserDetails) authenticationFacadeImpl.getAutentication().getPrincipal();
+
+       User user = Assembler.createUser(userService.getUserByName(userDetails.getUsername()));       
+       
        try{
            Company company = Assembler.createCompany(companyService.getFullCompany(id));
            model.addObject("usersAvailable", userService.listUsers());
            model.addObject("company", company);
        }
        catch(Exception e){
-           logger.debug(e);
+           model.addObject("message", e.getMessage());
+           logger.error(e);
        }
        
+       model.addObject("user", user);
        model.setViewName("editCompany");
        
        return model;
@@ -247,18 +265,38 @@ public class CompanyController{
    public ModelAndView updateCompanyPage(@Valid @ModelAttribute("company") Company company, BindingResult result){
        ModelAndView model = new ModelAndView();
        BasicConfigurator.configure();
+       
+       UserDetails userDetails =
+               (UserDetails) authenticationFacadeImpl.getAutentication().getPrincipal();
+
+       User user = Assembler.createUser(userService.getUserByName(userDetails.getUsername()));         
+       
        try{
-//         CompanyActivity companyActivity = Assembler.createCompanyActivity(companyActivityService.getCompanyActivityById(companyActivityId));
-//         company.setCompanyActivity(companyActivity);
-         logger.info(company.toString());
-         companyService.updateCompany(company);
-         
+           if(result.hasErrors()){
+               model.addObject("message", errorsHelper.getErrorMessages(result.getFieldErrors()));
+               model.addObject("usersAvailable", userService.listUsers());
+               model.addObject("company", company);
+               model.addObject("user", user);
+               model.setViewName("editCompany");
+               logger.error(errorsHelper.getErrorMessages(result.getFieldErrors()));
+             }
+             else{
+                 companyService.updateCompany(company);
+                 model.setViewName("redirect:/company/" + company.getId());
+                 logger.info("USER: " + user.getUsername() + "updating company :: " + LocalTime.now());
+             }
+           
        }
        catch(Exception e){
-           logger.error(e);
+           model.addObject("message", e.getMessage());
+           model.addObject("company", company);
+           model.addObject("usersAvailable", userService.listUsers());
+           model.addObject("user", user);
+           model.setViewName("editCompany");
+           logger.error(e.getMessage());
        }
        
-       model.setViewName("redirect:/company/" + company.getId());
+       
        return model;
    }
    
@@ -273,15 +311,23 @@ public class CompanyController{
    public ModelAndView deleteCompanyPage(@PathVariable(value = "id") int id){
        ModelAndView model = new ModelAndView();
        BasicConfigurator.configure();
+       UserDetails userDetails =
+               (UserDetails) authenticationFacadeImpl.getAutentication().getPrincipal();
+
+       User user = Assembler.createUser(userService.getUserByName(userDetails.getUsername()));        
+       
        try{
          companyService.deleteCompany(Assembler.createCompany(companyService.getCompanyById(id)));
-         logger.info("DELETED");
+         model.setViewName("redirect:/indexCompany");
+         logger.info("USER: " + user.getUsername() + "deleting company :: " + LocalTime.now());
        }
        catch(Exception e){
+           model.addObject("message", e.getMessage());
+           model.setViewName("showCompany");
            logger.error("Exception", e);
        }
        
-       model.setViewName("redirect:/indexCompany");
+       
        return model;
    }
    
