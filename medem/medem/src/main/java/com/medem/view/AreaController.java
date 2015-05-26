@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.joda.time.LocalTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -31,6 +32,9 @@ import com.medem.security.AuthenticationFacadeImpl;
 import com.medem.service.AreaService;
 import com.medem.service.CompanyService;
 import com.medem.service.UserService;
+import com.medem.utils.MedemResourceBundle;
+import com.medem.utils.MedemViewMessages;
+import com.medem.validator.AreaValidator;
 
 @Controller
 public class AreaController {
@@ -50,11 +54,25 @@ public class AreaController {
 	
 	private ErrorsHelper errorsHelper;
 	
+	@Autowired
+	private AreaValidator areaValidator;
+	
+	@Autowired
+	private ResourceBundleMessageSource messageSource;
+	
+	@Autowired
+	private MedemResourceBundle medemResourceBundle;
+	
+	@Autowired
+	private MedemViewMessages medemViewMessages;
+	
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder) {
      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
      dateFormat.setLenient(false);
      webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+     
+     //webDataBinder.addValidators(areaValidator);
     }	
 	
 	@RequestMapping(value = "/newArea/{id}", method = RequestMethod.GET)
@@ -75,13 +93,15 @@ public class AreaController {
 	}
 	
     @RequestMapping(value = "/addArea**", method = RequestMethod.POST)
-    public ModelAndView addAreaPage(@Valid @ModelAttribute("Area") Area area, BindingResult result){
+    public ModelAndView addAreaPage(@ModelAttribute("Area") @Valid Area area, BindingResult result){
         ModelAndView model = new ModelAndView();
         BasicConfigurator.configure();
         UserDetails userDetails =
                 (UserDetails) authenticationFacadeImpl.getAutentication().getPrincipal();
 
         User user = Assembler.createUser(userService.getUserByName(userDetails.getUsername())); 
+       
+        areaValidator.validate(area, result);
         
         try{
             if(result.hasErrors()){
@@ -101,10 +121,13 @@ public class AreaController {
             }
         }
         catch(Exception e){
-            model.addObject("message", e.getMessage());
+            StringBuilder messages = medemViewMessages.getErrorMessages(result);
+            model.addObject("message", messages.toString());
             model.setViewName("newArea");
-            logger.error(e.getMessage());            
+            logger.error(messages);            
         }
+        
+        
         
         return model;
     }	

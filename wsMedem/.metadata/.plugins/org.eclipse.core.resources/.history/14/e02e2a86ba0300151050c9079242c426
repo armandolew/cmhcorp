@@ -1,0 +1,70 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+ 
+	
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+ 
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/medem" />
+		<property name="username" value="medem" />
+		<property name="password" value="medem123" />
+	</bean>
+
+	<bean id="sessionFactory"
+	    class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+
+	    <property name="dataSource" ref="dataSource" />
+	    <property name="annotatedClasses">
+	      <list>
+	        <value>com.medem.model.Area</value>
+	        <value>com.medem.model.ActivityCompany</value>
+	        <value>com.medem.model.Address</value>
+	        <value>com.medem.model.BloodGroup</value>
+	        <value>com.medem.model.BodySystem</value>
+	        <value>com.medem.model.Company</value>
+	        <value>com.medem.model.Diagnosis</value>
+	        <value>com.medem.model.Employee</value>
+	        <value>com.medem.model.TypeBodySystem</value>
+	        <value>com.medem.model.TypeDiagnosis</value>
+	        <value>com.medem.model.User</value>
+	      </list>
+	    </property>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
+                </prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.c3p0.min_size">10</prop>
+				<prop key="hibernate.c3p0.max_size">20</prop>
+				<prop key="hibernate.c3p0.acquire_increment">1</prop>
+				<prop key="hibernate.c3p0.idle_test_period">3000</prop>
+				<prop key="hibernate.c3p0.max_statements">50</prop>
+				<prop key="hibernate.c3p0.timeout">1800</prop>
+			</props>
+        </property>	    
+	</bean>
+
+
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory"><ref bean="sessionFactory" /></property>
+	</bean>
+
+	<!-- enable the configuration of transactional behavior based on annotations -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+         
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>	
+ 
+</beans>

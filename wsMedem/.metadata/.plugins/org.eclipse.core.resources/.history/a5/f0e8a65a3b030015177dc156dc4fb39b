@@ -1,0 +1,28 @@
+package com.medem.dto;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import com.medem.model.Employee;
+import com.medem.model.EmployeeRisk;
+import com.medem.model.PhysicalExploration;
+import com.medem.model.Risk;
+import com.medem.model.SexualActivity;
+
+public class MedicalHistoryDTO implements Serializable {
+    
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int id;
+	private Date createdAt;
+	private String analysis;
+	private String treatment;
+	private String createdBy;
+	private String currentCondition;
+	private SexualActivity sexualActivity;
+	private Risk risk;
+	private Employee employee;
+	private PhysicalExploration physicalExploration;
+}

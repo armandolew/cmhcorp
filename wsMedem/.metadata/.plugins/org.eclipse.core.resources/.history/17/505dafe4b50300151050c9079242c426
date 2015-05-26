@@ -1,0 +1,53 @@
+package com.medem.dao;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.medem.model.MedicalHistory;
+import com.medem.model.MedicalRecord;
+
+@Repository("medicalRecordDAO")
+public class MedicalHistoryDAOImpl extends HibernateDaoSupportWithJdbcTemplateHolder implements MedicalHistoryDAO {
+
+	@Autowired
+	public MedicalHistoryDAOImpl(HibernateTemplate hibernateTemplate){
+		super(hibernateTemplate);
+	}
+
+	
+	@Transactional
+	public void addMedicalHistory(MedicalHistory medicalHistory) throws Exception {
+		
+		try{
+			getHibernateTemplate().getSessionFactory().getCurrentSession().save(medicalHistory);
+
+		}
+		catch(DataAccessException dae){
+		    throw new Exception();
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<MedicalHistory> listMedicalHistories(int employeeId) throws Exception {
+	    try{
+		  return getHibernateTemplate().getSessionFactory().getCurrentSession().createQuery("from MedicalHistory medicalHistory where medicalHistory.employeeId=:employeeId").list();
+	    }
+	    catch(DataAccessException dae){
+	        throw new Exception();
+	    }
+	}
+
+	@Transactional
+	public MedicalHistory getMedicalHistoryById(int id) {
+		return (MedicalHistory) getHibernateTemplate().getSessionFactory().getCurrentSession().load(MedicalHistory.class,  new Integer(id));
+	}
+	
+	
+	
+}

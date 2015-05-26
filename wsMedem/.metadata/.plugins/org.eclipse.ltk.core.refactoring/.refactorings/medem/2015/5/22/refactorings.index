@@ -1,3 +1,14 @@
 1432574258704	Delete element
 1432574280722	Delete element
 1432574291041	Delete element
+1432598763505	Rename type 'MedicalRecordDAO'
+1432598776177	Rename type 'MedicalRecordDAOImpl'
+1432598789628	Rename type 'MedicalRecordDTO'
+1432599553181	Rename type 'MedicalRecordService'
+1432599563251	Rename type 'MedicalRecordServiceImpl'
+1432653559604	Delete element
+1432653565360	Delete element
+1432653628028	Rename type 'MedicalRecordController'
+1432663565091	Rename type 'AreaValidatro'
+1432677354385	Move file
+1432683607242	Move file

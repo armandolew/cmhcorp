@@ -8,112 +8,26 @@
     <head>
       <meta charset="utf=8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-      <link href="bootstrap/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
-      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-      <link href="css/custom.css" rel="stylesheet">
-      <link href="css/general_layout_override.css" rel="stylesheet">
-      <script src="bootstrap/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
-      <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-      <script src="js/main_functions.js"></script>
-      <title>MEDEM :: Empleado ${employee.name} :: Nuevo Historial Clinico</title>
+      <script src="/medem/bootstrap/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+	  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	  <script src="/medem/js/main_functions.js"></script>
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+      <link href="/medem/bootstrap/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="/medem/css/general_layout_override.css" rel="stylesheet">
+      <link href="/medem/css/custom.css" rel="stylesheet" >
+      <title>MEDEM :: ${employee.name} :: Nuevo Historial Clinico</title>
     </head>
 
     <body id="historia_clinica">
 
-		<nav class="navbar navbar-default" role="navigation">
-			<div class="navbar-header">
-	            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	                <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
-	                    class="icon-bar"></span><span class="icon-bar"></span>
-	            </button>
-	            <a class="navbar-brand" href="http://www.jquery2dotnet.com">MEDEM</a>				
-			</div><!-- .navbar-header -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-	                <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
-	                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-	                    class="glyphicon glyphicon-user"></span> Empleados <b class="caret"></b></a>
-	                    <ul class="dropdown-menu">
-	                        <li><a href="http://www.jquery2dotnet.com">
-	                        	<span class="glyphicon glyphicon-plus-sign"></span> Crear Empleado</a>
-	                        </li>
-	                        <li><a href="http://www.jquery2dotnet.com">
-	                        	<span class="glyphicon glyphicon-list-alt"></span> Listar Empleados</a></li>
-	                        <li>
-	                        	 <a href="#"><span class="glyphicon glyphicon-search"></span> Buscar Empleado</a>
-	                        </li>
-	                        <li class="divider"></li>
-	                        <li><a href="#">Separated link</a></li>
-	                        <li class="divider"></li>
-	                        <li><a href="#">One more separated link</a></li>
-	                    </ul>
-	                </li>	
-	                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-	                    class="glyphicon glyphicon-bookmark"></span> Empresas <b class="caret"></b></a>
-	                    <ul class="dropdown-menu">
-	                        <li><a href="http://www.jquery2dotnet.com">
-	                        	<span class="glyphicon glyphicon-plus-sign"></span> Crear Empresa</a>
-	                        </li>
-	                        <li><a href="http://www.jquery2dotnet.com">
-	                        	<span class="glyphicon glyphicon-list-alt"></span> Listar Empresa</a></li>
-	                        <li>
-	                        	 <a href="#"><span class="glyphicon glyphicon-search"></span> Buscar Empresa</a>
-	                        </li>
-	                        <li class="divider"></li>
-	                        <li><a href="#">Separated link</a></li>
-	                        <li class="divider"></li>
-	                        <li><a href="#">One more separated link</a></li>
-	                    </ul>
-	                </li>
-	                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-	                    class="glyphicon glyphicon-flag"></span> Areas <b class="caret"></b></a>
-	                    <ul class="dropdown-menu">
-	                        <li><a href="http://www.jquery2dotnet.com">
-	                        	<span class="glyphicon glyphicon-plus-sign"></span> Crear Area</a>
-	                        </li>
-	                        <li><a href="http://www.jquery2dotnet.com">
-	                        	<span class="glyphicon glyphicon-list-alt"></span> Listar Areas</a></li>
-	                        <li class="divider"></li>
-	                        <li><a href="#">Separated link</a></li>
-	                        <li class="divider"></li>
-	                        <li><a href="#">One more separated link</a></li>
-	                    </ul>
-	                </li>	
-	                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-	                    class="glyphicon glyphicon-stats"></span> Reportes <b class="caret"></b></a>
-	                    <ul class="dropdown-menu">
-	                        <li><a href="http://www.jquery2dotnet.com">
-	                        	<span class="glyphicon glyphicon-plus-sign"></span> Generar Reporte</a>
-	                        </li>
-	                    </ul>
-	                </li>	                                		
-				</ul><!-- .nav navbar-nav -->
-				<ul class="nav navbar-nav navbar-right">
-	                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-	                    class="glyphicon glyphicon-user"></span> Usuario <b class="caret"></b></a>
-	                    <ul class="dropdown-menu">
-	                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
-	                        <li class="divider"></li>
-	                        <li><a href="#"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
-	                    </ul>
-	                </li>					
-				</ul><!-- .nav navbar-nav navbar-right -->
-			</div><!-- .collapse navbar-collapse -->
-		</nav><!-- .navbar navbar-default -->
+		<jsp:include page="layouts/navigation_layout.jsp"></jsp:include>
 		
 		<div class="container" id="medicalRecord">
 		  <div class="col-md-12">
 		    <div class="row">
-            	<ul class="nav nav-tabs">
-                	<li><a href="employeeShow?id=${employee.id }">Ficha de Identificaci&#243;n</a></li>
-                	<li><a href="workBackground?id=${employee.id}">Ant. Laborales</a></li>
-                	<li><a href="familyHistory?id=${employee.id}">Ant. Heredofamiliares</a></li>
-                	<li class="active"><a href="#">Historia Clinica</a></li>
-                	<li><a href="medicalExam?id=${employee.id}">Examenes</a></li>
-                	<li><a href="medicalNote?id=${employee.id}">Notas</a></li>                
-              	</ul><!-- .nav nav-tabs -->	
+
+				<jsp:include page="layouts/employee_tabs_nav_layouts.jsp"></jsp:include>	
               	
               	<div class="tab-content">
               	  <div class="tab-pane fade in active">
@@ -129,7 +43,7 @@
 
                       <div class="panel-body">
                         <div class="panel-group" id="accordion">
-                         <form:form action="/medem/addMedicalRecord" method="POST" modelAttribute="MedicalRecord">
+                         <form:form action="/medem/addMedicalHistory" method="POST" modelAttribute="MedicalHistory">
                             <div class="panel panel-primary" id="personalPatologicals">
                               <div class="panel-heading">
                                 <h4 class="panel-title">
@@ -452,8 +366,8 @@
                               <div id="accordionFour" class="panel-collapse collapse">
                                 <div class="panel-body">
                                   <div class="form-group">
-                                    <label for="currentAilment" data-toggle="tooltip" data-original-title="[?] El nombre de usuario debe contener mas de 3 caracteres alfanumericos. No se deben incluir espacios en blanco.">Descripci&#243;n</label>
-                                     <textarea class="form-control" rows="5" id="currentAilment" name="currentAilment"></textarea>
+                                    <form:label path="currentCondition">Descripci&#243;n</form:label>
+                                     <form:textarea path="currentCondition" class="form-control" rows="5"></form:textarea>
                                   </div><!-- .form-group -->                                    
                                 </div>
                               </div>                              
@@ -2333,8 +2247,8 @@
                               <div id="accordionEight" class="panel-collapse collapse">
                                 <div class="panel-body">
                                   <div class="form-group">
-                                    <label for="analisis" data-toggle="tooltip" data-original-title="[?] El nombre de usuario debe contener mas de 3 caracteres alfanumericos. No se deben incluir espacios en blanco.">Descripci&#243;n</label>
-                                     <textarea class="form-control" rows="5" id="analisis" name="analisis"></textarea>
+                                    <form:label path="analysis">Descripci&#243;n</form:label>
+                                     <form:textarea class="form-control" rows="5" path="analysis"></form:textarea>
                                   </div><!-- .form-group -->                                    
                                 </div>
                               </div>                              
@@ -2351,8 +2265,8 @@
                               <div id="accordionNine" class="panel-collapse collapse">
                                 <div class="panel-body">
                                   <div class="form-group">
-                                    <label for="treatment" data-toggle="tooltip" data-original-title="[?] El nombre de usuario debe contener mas de 3 caracteres alfanumericos. No se deben incluir espacios en blanco.">Descripci&#243;n</label>
-                                     <textarea class="form-control" rows="5" id="treatment" name="treatment"></textarea>
+                                    <form:label path="treatment" >Descripci&#243;n</form:label>
+                                     <form:textarea class="form-control" rows="5" path="treatment"></form:textarea>
                                   </div><!-- .form-group -->                                    
                                 </div>
                               </div>                              
@@ -2370,17 +2284,17 @@
                                 <div class="panel-body">
                                   <div class="form-group">
                                     <ul class="list-group">
-                                      <li class="list-group-item list-group-item-success"><form:radiobutton path="employeeRisk.value" value="1" /> <b>Bajo</b></li>
-                                      <li class="list-group-item list-group-item-warning"><form:radiobutton path="employeeRisk.value" value="2" /> <b>Medio</b></li>
-                                      <li class="list-group-item list-group-item-danger"><form:radiobutton path="employeeRisk.value" value="3" /> <b>Alto</b></li>
+                                      <li class="list-group-item list-group-item-success"><form:radiobutton path="risk.id" value="1" /> <b>Bajo</b></li>
+                                      <li class="list-group-item list-group-item-warning"><form:radiobutton path="risk.id" value="2" /> <b>Medio</b></li>
+                                      <li class="list-group-item list-group-item-danger"><form:radiobutton path="risk.id" value="3" /> <b>Alto</b></li>
                                     </ul>
                                   </div><!-- .form-group -->                                    
                                 </div>
                               </div>                              
                             </div><!-- #risk -->                          
                             
-                            <form:hidden path="employeeId" value="${employee.getId() }" />
-                            <form:hidden path="userName" value="armando" />
+                            <form:hidden path="employee.id" value="${employee.getId() }" />
+                            <form:hidden path="createdBy" value="${user.username }" />
                             <form:hidden path="createdAt" value="2015-04-13" />
                             <br/><br/>                                                                                     
                             <input type="submit" class="btn btn-block btn-primary" value="Generar Historia Clinica" />
@@ -2401,7 +2315,9 @@
               	</div><!-- .tab-content -->	    
 		    </div><!-- .row -->
 		  </div><!-- .col-med-12 -->
-		</div><!-- .container -->		
+		</div><!-- .container -->	
+		
+		<jsp:include page="layouts/footer_layout.jsp"></jsp:include>	
 
     </body>
 

@@ -1,0 +1,16 @@
+package com.medem.utils;
+
+import java.util.List;
+
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+
+public class MedemViewMessages {
+
+    public String getErrorMessages(BindingResult result){
+        List<ObjectError> allErrors = result.getAllErrors();
+        StringBuilder messages = new StringBuilder();
+        
+        
+    }
+}

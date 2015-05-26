@@ -1,0 +1,7 @@
+package com.medem.dao.impl;
+
+import com.medem.dao.HibernateDaoSupportWithJdbcTemplateHolder;
+
+public class RiskDAOImpl extends HibernateDaoSupportWithJdbcTemplateHolder implements RiskDAO {
+
+}

@@ -1,0 +1,15 @@
+package com.medem.service;
+
+import java.util.List;
+
+import com.medem.dto.MedicalHistoryDTO;
+import com.medem.model.MedicalHistory;
+import com.medem.model.MedicalRecord;
+
+public interface MedicalHistoryService {
+
+	public void addMedicalHistory(MedicalHistory medicalHistory);
+	public List<MedicalHistoryDTO> listMedicalRecords(int employeeId);
+	public MedicalHistoryDTO getMedicalRecordById(int id);
+	
+}

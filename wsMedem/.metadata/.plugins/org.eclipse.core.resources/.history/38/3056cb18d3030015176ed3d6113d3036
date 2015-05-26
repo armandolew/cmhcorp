@@ -1,0 +1,20 @@
+package com.medem.validator;
+
+import org.springframework.validation.Validator;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+
+import com.medem.model.Area;
+
+public class AreaValidator implements Validator {
+
+    @Override
+    public boolean supports(Class clazz){
+        return Area.class.isAssignableFrom(clazz);
+    }
+    
+    @Override
+    public void validate(Object target, Errors errors){
+        ValidationUtils.rejectIfEmpty(errors, "name", "areaNameEmpty");
+    }
+}

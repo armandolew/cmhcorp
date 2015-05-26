@@ -1,0 +1,13 @@
+package com.medem.validator;
+
+import org.springframework.validation.Validator;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+
+public class AreaValidator implements Validator {
+
+    public boolean supports(Class clazz){
+        Area.class.isAssignableFrom(clazz);
+    }
+    
+}

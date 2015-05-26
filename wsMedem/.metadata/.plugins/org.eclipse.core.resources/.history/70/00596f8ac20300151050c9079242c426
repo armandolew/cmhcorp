@@ -1,0 +1,6 @@
+package com.medem.dao;
+
+public interface RiskDAO {
+
+    public Risk getRiskById(int id);
+}

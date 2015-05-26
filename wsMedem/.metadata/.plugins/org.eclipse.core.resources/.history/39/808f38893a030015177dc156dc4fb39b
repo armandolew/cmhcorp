@@ -1,0 +1,63 @@
+package com.medem.model;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+/**
+ * <b>MedicalHistory</b> details {@link Employee}employee's medical information
+ * @author indigo
+ *
+ */
+
+@Entity
+@Table(name="medical_record")
+public class MedicalHistory implements Serializable {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    @NotNull
+    @Column(name="id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
+    
+    @NotNull
+    @Column(name="createdAt")
+    private Date createdAt;
+    
+    private String analysis;
+    
+    private String treatment;
+    
+    @NotNull
+    @Column(name="createdBy")
+    private String createdBy;
+    
+    private String currentCondition;
+    
+    @NotNull
+    @JoinColumn(name="id_sexualActivity", referencedColumnName = "id", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
+    private SexualActivity sexualActivity;
+    
+    @NotNull
+    @JoinColumn(name="id_risk", referencedColumnName = "id", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
+    private Risk risk;   
+    
+}

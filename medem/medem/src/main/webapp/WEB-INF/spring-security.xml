@@ -18,7 +18,7 @@
 		<intercept-url pattern="/employee**" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/workBackground**" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/familyHistory**" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/medicalRecord**" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/medicalHistory**" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/medicalExam**" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/indexEmployees**" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/newArea**" access="hasRole('ROLE_USER')"/>

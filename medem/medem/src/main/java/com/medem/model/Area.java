@@ -29,7 +29,7 @@ public class Area implements Serializable{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;	
     
-    @NotEmpty(message="Nombre vacio")
+    
     @Column(name="name")
     private String name;
     

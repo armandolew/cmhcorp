@@ -33,6 +33,10 @@
 	        <value>com.medem.model.Company</value>
 	        <value>com.medem.model.Diagnosis</value>
 	        <value>com.medem.model.Employee</value>
+	        <value>com.medem.model.MedicalHistory</value>
+	        <value>com.medem.model.PhysicalExploration</value>
+	        <value>com.medem.model.Risk</value>
+	        <value>com.medem.model.SexualActivity</value>
 	        <value>com.medem.model.TypeBodySystem</value>
 	        <value>com.medem.model.TypeDiagnosis</value>
 	        <value>com.medem.model.User</value>

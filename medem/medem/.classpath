@@ -8,8 +8,8 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src/main/resources/configuration"/>
 	<classpathentry kind="src" path="src/test/resources/configuration"/>
-	<classpathentry excluding="configuration/" kind="src" path="src/test/resources"/>
-	<classpathentry excluding="configuration/" kind="src" path="src/main/resources"/>
+	<classpathentry excluding="configuration/" including="**/*.java" kind="src" path="src/test/resources"/>
+	<classpathentry excluding="configuration/" including="**/*.java" kind="src" path="src/main/resources"/>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
 			<attribute name="optional" value="true"/>

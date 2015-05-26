@@ -35,7 +35,7 @@
                 		  <h3 class="panel-title"><span class="glyphicon glyphicon-pencil"></span> :: Datos de la nueva area</h3>
               			</div><!-- .panel-heading -->
               			<div class="panel-body">
-		                 <form:form action="/medem/addArea" method="POST" modelAttribute="Area" id="newAreaForm">
+		                 <form:form action="/medem/addArea" method="POST" modelAttribute="Area" id="newAreaForm" name="newAreaForm">
 		                    <div class="form-group">
 		                      <form:label path="name">Nombre del area</form:label>
 		                      <form:input path="name" class="form-control required-text" placeholder="Nombre del area" />
@@ -57,7 +57,7 @@
 		   
 		   <jsp:include page="layouts/footer_layout.jsp"></jsp:include>
 		   
-		   <c:if test="${not empty message }" >
+		   <c:if test="${! empty message }" >
       		<script>
         		showMessage("${message}", "danger", "#myModal");
       		</script>

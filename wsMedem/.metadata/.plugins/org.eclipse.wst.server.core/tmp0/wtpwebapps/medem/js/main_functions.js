@@ -261,17 +261,17 @@ $(document).ready(function(){
 	// fileUploadForm validation.
 	
 	// newAreaForm validation
-	$("#newAreaForm").on("submit", function(event){
-		event.preventDefault();
-		var formValidation = validateForm("#newAreaForm");
-		
-		if(formValidation){
-			console.log("ready to send");
-			showMessage("Procesando ...", "success", "#myModal");
-			document.getElementById("newAreaForm").submit();
-		}
-		
-	});	
+//	$("#newAreaForm").on("submit", function(event){
+//		event.preventDefault();
+//		var formValidation = validateForm("#newAreaForm");
+//		
+//		if(formValidation){
+//			console.log("ready to send");
+//			showMessage("Procesando ...", "success", "#myModal");
+//			document.getElementById("newAreaForm").submit();
+//		}
+//		
+//	});	
 	// newAreaForm validation
 	
 	// editAreaForm validation

@@ -1,0 +1,8 @@
+            	<ul class="nav nav-tabs">
+                	<li><a href="/medem/employee/${id_employee}">Ficha de Identificaci&#243;n</a></li>
+                	<li><a href="/medem/workBackground?id=${id_employee}">Ant. Laborales</a></li>
+                	<li><a href="/medem/familyHistory?id=${id_employee}">Ant. Heredofamiliares</a></li>
+                	<li><a href="/medem/medicalHistory/${id_employee}">Historia Clinica</a></li>
+                	<li><a href="/medem/medicalExam?id=${id_employee}">Examenes</a></li>
+                	<li><a href="/medem/medicalNote?id=${id_employee}">Notas</a></li>                
+              	</ul><!-- .nav nav-tabs -->

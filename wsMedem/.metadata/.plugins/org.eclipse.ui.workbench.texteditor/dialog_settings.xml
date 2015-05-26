@@ -2,37 +2,37 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="369" key="DIALOG_WIDTH"/>
-		<item value="179" key="DIALOG_Y_ORIGIN"/>
-		<item value="540" key="DIALOG_HEIGHT"/>
+		<item value="123" key="DIALOG_Y_ORIGIN"/>
 		<item value="877" key="DIALOG_X_ORIGIN"/>
+		<item value="596" key="DIALOG_HEIGHT"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="Area" key="selection"/>
+		<item value="" key="selection"/>
 		<list key="findhistory">
+			<item value="mock"/>
+			<item value="createMedical"/>
 			<item value="Area"/>
+			<item value="company.id"/>
+			<item value="employeeId"/>
 			<item value="User user = Assembler.createUser(userService.getUserByName(userDetails.getUsername()));"/>
 			<item value=" throws DataAccessException"/>
 			<item value="user.getCompanyId()"/>
-			<item value="profile-sidebar"/>
-			<item value="showMessage"/>
-			<item value="employeeHash"/>
-			<item value="Company"/>
 		</list>
 		<list key="replacehistory">
+			<item value="id_company"/>
+			<item value="id"/>
 			<item value="User user = Assembler.createUser(userService.getFullUserByName(userDetails.getUsername()));"/>
 			<item value=""/>
 			<item value="user.getCompany().getId()"/>
 			<item value="ht"/>
 			<item value="&quot;-&quot;"/>
 			<item value="&lt;hr class=&quot;divider&quot;&gt;"/>
-			<item value="float"/>
-			<item value="int"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">

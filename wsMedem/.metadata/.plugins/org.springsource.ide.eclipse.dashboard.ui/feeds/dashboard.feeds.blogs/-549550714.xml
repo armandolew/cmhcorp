@@ -5,7 +5,35 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2015-05-22T22:35:29Z</updated>
+  <updated>2015-05-26T12:01:00Z</updated>
+  <entry>
+    <title>Spring Framework 4.2 goes RC1</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/05/26/spring-framework-4-2-goes-rc1" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Juergen Hoeller</name>
+    </author>
+    <id>tag:spring.io,2015-05-25:2136</id>
+    <updated>2015-05-26T12:01:00Z</updated>
+    <content type="html">&lt;p&gt;Dear Spring community,&lt;/p&gt;&lt;p&gt;It&amp;rsquo;s my pleasure to announce that Spring Framework 4.2 RC1 is now available from our &lt;a href="http://repo.spring.io/milestone/"&gt;milestone repository&lt;/a&gt;. This is a feature release in the 4.x line with a focus on core refinements and modern web capabilities:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Annotation detection on Java 8 default methods (e.g. &lt;code&gt;@Bean&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Annotation-based application events (&lt;code&gt;@EventListener&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;First-class support for annotation attribute aliases&lt;/li&gt;
+  &lt;li&gt;Full nested path processing for direct field binding&lt;/li&gt;
+  &lt;li&gt;Data binding and conversion for JSR-354 Money &amp;amp; Currency&lt;/li&gt;
+  &lt;li&gt;Integration with Hibernate ORM 5.0 (natively and via JPA)&lt;/li&gt;
+  &lt;li&gt;Rich support for CORS and declarative HTTP caching&lt;/li&gt;
+  &lt;li&gt;First-class support for HTTP Streaming and Server-Sent Events&lt;/li&gt;
+  &lt;li&gt;Listenable/CompletableFuture as message handler return value&lt;/li&gt;
+  &lt;li&gt;A STOMP client for use over TCP and WebSocket channels&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Check out &lt;a href="https://jira.spring.io/secure/ReleaseNote.jspa?projectId=10000&amp;version=14754"&gt;the full changelog&lt;/a&gt; and the &lt;a href="https://docs.spring.io/spring-framework/docs/4.2.x/spring-framework-reference/htmlsingle/#new-in-4.2"&gt;New Features and Enhancements in Spring Framework 4.2&lt;/a&gt; in the reference documentation for a more detailed overview. We&amp;rsquo;ll be publishing in-depth blog posts for specific feature areas in the course of the next few weeks; stay tuned!&lt;/p&gt;&lt;p&gt;There is an RC2 planned for mid June before we go GA in mid July. Note that the 4.2 line will supersede 4.1 immediately, with further 4.1.x maintenance only to be provided for a few months after the 4.2 GA release. Development towards 4.3 will commence soon afterwards.&lt;/p&gt;&lt;p&gt;We&amp;rsquo;re looking forward to getting in touch via &lt;a href="https://twitter.com/springcentral"&gt;Twitter&lt;/a&gt;, &lt;a href="http://stackoverflow.com/tags/spring"&gt;StackOverflow&lt;/a&gt; or &lt;a href="https://jira.spring.io/browse/SPR"&gt;JIRA&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Cheers,&lt;/p&gt;&lt;p&gt;Juergen&lt;/p&gt;&lt;h1&gt;&lt;a href="#springone-2gx-2015-is-around-the-corner" class="anchor" name="springone-2gx-2015-is-around-the-corner"&gt;&lt;/a&gt;SpringOne 2GX 2015 is around the corner!&lt;/h1&gt;&lt;p&gt;Book your place at &lt;a href="http://www.springone2gx.com"&gt;SpringOne2GX in Washington, DC soon&lt;/a&gt;. Super Early Bird Price expires June 12th! It&amp;rsquo;s simply the best opportunity to find out first hand all that&amp;rsquo;s going on and to provide direct feedback. Join Stéphane and myself for a session on &lt;a href="https://2015.event.springone2gx.com/schedule/sessions/modern_java_component_design_with_spring_4_2.html"&gt;modern Java component design for Spring 4.2&lt;/a&gt;.&lt;/p&gt;&lt;h1&gt;&lt;a href="#discounts" class="anchor" name="discounts"&gt;&lt;/a&gt;Discounts&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;The Super Early Bird price tier ($300 discount) expires June 12th. The Early Bird price tier (June 13th - August 14th) is discounted $150.&lt;/li&gt;
+  &lt;li&gt;Register 4 and get the 5th pass free. Contact us with the names of your first 4 registrants for your complimentary pass code (conference admission only).&lt;/li&gt;
+  &lt;li&gt;Alumni, contact us for your discount code ($150 off any option).&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
   <entry>
     <title>Spring Cloud Connectors 1.2.0 RC1 released</title>
     <link rel="alternate" href="https://spring.io/blog/2015/05/22/spring-cloud-connectors-1-2-0-rc1-released" />
@@ -839,17 +867,6 @@ public String redirect() {&#xD;
     <id>tag:spring.io,2015-05-11:2117</id>
     <updated>2015-05-11T18:39:11Z</updated>
     <content type="html">&lt;p&gt;In STS 3.6.4 we introduced &lt;a href="https://drive.google.com/open?id=0B-E3P0EgKBcKdE9GY3RiMDZNb0E&amp;authuser=1"&gt;&amp;ldquo;.properties&amp;rdquo; editor support&lt;/a&gt;, for editing Spring Boot configuration properties.&lt;/p&gt;&lt;p&gt;Soon thereafter, people started asking about support for &amp;ldquo;.yml&amp;rdquo; files as well. We are proud to say that the &amp;ldquo;.yml&amp;rdquo; support is now reality.&lt;/p&gt;&lt;p&gt;Check out the &lt;a href="https://docs.google.com/file/d/0B-E3P0EgKBcKdE9GY3RiMDZNb0E/edit"&gt;5 minute video demo&lt;/a&gt; to see this in action:&lt;/p&gt;&lt;p&gt;The Spring Boot Yaml editor is built on top of &lt;a href="https://github.com/oyse/yedit"&gt;YEdit&lt;/a&gt;. STS adds boot-specific content-assist, validation, hover-infos and hyperlink detectors.&lt;/p&gt;&lt;p&gt;It can be tried out today from STS&amp;rsquo;s &lt;a href="https://github.com/spring-projects/spring-ide#installation-ci-builds"&gt;nightly update site&lt;/a&gt; and is planned to be released as part of STS 3.7.0 near the end of June 2015.&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Gradle dependency management plugin 0.5.1 released</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/05/11/gradle-dependency-management-plugin-0-5-1-released" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Andy Wilkinson</name>
-    </author>
-    <id>tag:spring.io,2015-05-11:2116</id>
-    <updated>2015-05-11T16:03:30Z</updated>
-    <content type="html">&lt;p&gt;We are pleased to announce that &lt;a href="https://github.com/spring-gradle-plugins/dependency-management-plugin"&gt;Gradle dependency management plugin&lt;/a&gt; 0.5.1.RELEASE is now available from Maven Central, Bintray, and the Gradle Plugin Portal. For more information about how the plugin can improve your Gradle builds, please read the &lt;a href="https://spring.io/blog/2015/02/23/better-dependency-management-for-gradle"&gt;introductory blog post&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;This maintenance release fixes an issue with the support for Maven-style exclusions. In addition, 0.5.0 introduced a new task, &lt;code&gt;dependencyManagement&lt;/code&gt;, that you can use to diagnose your project&amp;rsquo;s dependency management. More details can be found in the &lt;a href="https://github.com/spring-gradle-plugins/dependency-management-plugin#dependency-management-task"&gt;project&amp;rsquo;s README&lt;/a&gt;.&lt;/p&gt;</content>
   </entry>
 </feed>
 

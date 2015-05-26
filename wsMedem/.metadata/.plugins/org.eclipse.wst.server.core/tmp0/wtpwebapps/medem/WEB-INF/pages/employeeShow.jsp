@@ -37,7 +37,7 @@
 	            	<ul class="nav nav-tabs">
 	                	<li class="active"><a href="#">Ficha de Identificaci&#243;n</a></li>
 	                	<li><a href="/medem/familyHistory?id=${id}">Ant. Heredofamiliares</a></li>
-	                	<li><a href="/medem/medicalRecord?id=${id}">Historia Clinica</a></li>
+	                	<li><a href="/medem/medicalHistory/${id}">Historia Clinica</a></li>
 	                	<li><a href="/medem/medicalExam?id=${id}">Examenes</a></li>
 	                	<li><a href="/medem/medicalNote?id=${id}">Notas</a></li>                
 	              	</ul><!-- .nav nav-tabs -->

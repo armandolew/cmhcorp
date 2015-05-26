@@ -1,0 +1,34 @@
+package com.medem.utils;
+
+import java.util.Locale;
+
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
+
+@Configurable
+public class MedemResourceBundle {
+
+    private String key;
+    
+    @Resource(name="messageSource")
+    private MessageSource messageSource; 
+    
+    public MedemResourceBundle(String key){
+        super();
+        this.key = key;
+    }
+    
+    public String getValue(){
+        Locale locale = LocaleContextHolder.getLocale();
+        return messageSource.getMessage(key, new Object[0], locale);
+    }
+    
+    @Override
+    public String toString(){
+        return value();
+    }
+    
+}

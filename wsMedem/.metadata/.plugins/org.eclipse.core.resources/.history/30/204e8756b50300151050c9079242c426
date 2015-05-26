@@ -1,0 +1,13 @@
+package com.medem.dao;
+
+import java.util.List;
+
+import com.medem.model.MedicalRecord;
+
+public interface MedicalHistoryDAO {
+
+	public void addMedicalHistory(MedicalHistory medicalHistory);
+	public List<MedicalHistory> listMedicalHistories(int employeeId);
+	public MedicalHistory getMedicalHistoryById(int id);
+	
+}

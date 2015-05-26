@@ -14,10 +14,11 @@ import com.medem.model.EmployeeRisk;
 import com.medem.model.FamilyDisease;
 import com.medem.model.FamilyHistory;
 import com.medem.model.MedicalExam;
+import com.medem.model.MedicalHistory;
 import com.medem.model.MedicalNote;
-import com.medem.model.MedicalRecord;
 import com.medem.model.PersonalPathologicals;
 import com.medem.model.PhysicalExploration;
+import com.medem.model.Risk;
 import com.medem.model.SexualActivity;
 import com.medem.model.TypeBodySystem;
 import com.medem.model.TypeDiagnosis;
@@ -341,35 +342,65 @@ public class Assembler {
     	return familyDiseaseDTO;
     }
     
-    public static MedicalRecordDTO createMedicalRecordDTO(MedicalRecord medicalRecord){
-    	MedicalRecordDTO medicalRecordDTO = new MedicalRecordDTO();
+    public static MedicalHistoryDTO createMedicalHistoryDTO(MedicalHistory medicalHistory){
+    	MedicalHistoryDTO medicalHistoryDTO = new MedicalHistoryDTO();
     	
-    	int idMRDTO = (medicalRecord.getId() > 0) ? medicalRecord.getId() : 0;
-    	medicalRecordDTO.setId(idMRDTO);
+    	int id = (medicalHistory.getId() > 0) ? medicalHistory.getId() : 0;
+    	medicalHistoryDTO.setId(id);
     	
-    	String currentAilmentDTO = (medicalRecord.getCurrentAilment() != null) ? medicalRecord.getCurrentAilment() : "-";
-    	medicalRecordDTO.setCurrentAilment(currentAilmentDTO);
+    	String currentCondition = (medicalHistory.getCurrentCondition() != null) ? medicalHistory.getCurrentCondition() : "";
+    	medicalHistoryDTO.setCurrentCondition(currentCondition);
 
-    	String analisisDTO = (medicalRecord.getAnalisis() != null) ? medicalRecord.getAnalisis() : "-";
-    	medicalRecordDTO.setAnalisis(analisisDTO);
+    	String analysis = (medicalHistory.getAnalysis() != null) ? medicalHistory.getAnalysis() : "";
+    	medicalHistoryDTO.setAnalysis(analysis);
     	
-    	String treatmentDTO = (medicalRecord.getTreatment() != null) ? medicalRecord.getTreatment() : "-";
-    	medicalRecordDTO.setTreatment(treatmentDTO);
+    	String treatment = (medicalHistory.getTreatment() != null) ? medicalHistory.getTreatment() : "";
+    	medicalHistoryDTO.setTreatment(treatment);
     	
-    	String userNameDTO = (medicalRecord.getUserName() != null) ?  medicalRecord.getUserName() : "-";
-    	medicalRecordDTO.setUserName(userNameDTO);
+    	String username = (medicalHistory.getCreatedBy() != null) ?  medicalHistory.getCreatedBy() : "";
+    	medicalHistoryDTO.setCreatedBy(username);
     	
-    	PhysicalExploration physicalExplorationDTO = (medicalRecord.getPhysicalExploration() != null) ? medicalRecord.getPhysicalExploration() : null;
-    	medicalRecordDTO.setPhysicalExploration(physicalExplorationDTO);
+    	PhysicalExploration physicalExploration = (medicalHistory.getPhysicalExploration() != null) ? medicalHistory.getPhysicalExploration() : null;
+    	medicalHistoryDTO.setPhysicalExploration(physicalExploration);
     	
-    	EmployeeRisk employeeRiskDTO = (medicalRecord.getEmployeeRisk() != null) ? medicalRecord.getEmployeeRisk() : null;
-    	medicalRecordDTO.setEmployeeRisk(employeeRiskDTO);
+    	Risk risk = (medicalHistory.getRisk() != null) ? medicalHistory.getRisk() : null;
+    	medicalHistoryDTO.setRisk(risk);
     	
-    	SexualActivity sexualActivityDTO = (medicalRecord.getSexualActivity() != null) ? medicalRecord.getSexualActivity() : null;
-    	medicalRecordDTO.setSexualActivity(sexualActivityDTO);
+    	SexualActivity sexualActivity = (medicalHistory.getSexualActivity() != null) ? medicalHistory.getSexualActivity() : null;
+    	medicalHistoryDTO.setSexualActivity(sexualActivity);
     	
-    	return medicalRecordDTO;
+    	return medicalHistoryDTO;
     }
+    
+    public static MedicalHistory createMedicalHistory(MedicalHistoryDTO medicalHistoryDTO){
+        MedicalHistory medicalHistory = new MedicalHistory();
+        
+        int id = (medicalHistoryDTO.getId() > 0) ? medicalHistoryDTO.getId() : 0;
+        medicalHistory.setId(id);
+        
+        String currentCondition = (medicalHistoryDTO.getCurrentCondition() != null) ? medicalHistoryDTO.getCurrentCondition() : "";
+        medicalHistory.setCurrentCondition(currentCondition);
+
+        String analysis = (medicalHistoryDTO.getAnalysis() != null) ? medicalHistoryDTO.getAnalysis() : "";
+        medicalHistory.setAnalysis(analysis);
+        
+        String treatment = (medicalHistoryDTO.getTreatment() != null) ? medicalHistoryDTO.getTreatment() : "";
+        medicalHistory.setTreatment(treatment);
+        
+        String username = (medicalHistoryDTO.getCreatedBy() != null) ?  medicalHistoryDTO.getCreatedBy() : "";
+        medicalHistory.setCreatedBy(username);
+        
+        PhysicalExploration physicalExploration = (medicalHistoryDTO.getPhysicalExploration() != null) ? medicalHistoryDTO.getPhysicalExploration() : null;
+        medicalHistory.setPhysicalExploration(physicalExploration);
+        
+        Risk risk = (medicalHistoryDTO.getRisk() != null) ? medicalHistoryDTO.getRisk() : null;
+        medicalHistory.setRisk(risk);
+        
+        SexualActivity sexualActivity = (medicalHistoryDTO.getSexualActivity() != null) ? medicalHistoryDTO.getSexualActivity() : null;
+        medicalHistory.setSexualActivity(sexualActivity);
+        
+        return medicalHistory;
+    }    
     
     public static PersonalPathologicalsDTO createPersonalPathologicalsDTO(PersonalPathologicals personalPathologicals){
     	PersonalPathologicalsDTO personalPathologicalsDTO = new PersonalPathologicalsDTO();
@@ -807,6 +838,30 @@ public class Assembler {
         typeBodySystemDTO.setTypeBodySystem(typeBodySystemString);
         
         return typeBodySystem;
+    }    
+    
+    public static RiskDTO createRiskDTO(Risk risk){
+        RiskDTO riskDTO = new RiskDTO();
+        
+        int id = (risk.getId() > 0) ? risk.getId() : 0;
+        String risk_level = (risk.getRiskLevel() != null) ? risk.getRiskLevel() : "";
+        
+        riskDTO.setId(id);
+        riskDTO.setRiskLevel(risk_level);
+        
+        return riskDTO;
+    }
+    
+    public static Risk createRisk(RiskDTO riskDTO){
+        Risk risk = new Risk();
+        
+        int id = (riskDTO.getId() > 0) ? riskDTO.getId() : 0;
+        String risk_level = (riskDTO.getRiskLevel() != null) ? riskDTO.getRiskLevel() : "";
+        
+        risk.setId(id);
+        risk.setRiskLevel(risk_level);
+        
+        return risk;
     }    
 	
 }

@@ -30,7 +30,7 @@ import com.medem.service.EmployeeService;
 import com.medem.service.FamilyHistoryService;
 import com.medem.service.MedicalExamService;
 import com.medem.service.MedicalNoteService;
-import com.medem.service.MedicalRecordService;
+import com.medem.service.MedicalHistoryService;
 import com.medem.service.WorkBackgroundService;
 
 @Controller
@@ -52,7 +52,7 @@ public class MainController {
 	private WorkBackgroundService workBackgroundService;
 	
 	@Autowired
-	private MedicalRecordService medicalRecordService;
+	private MedicalHistoryService medicalRecordService;
 	
 	@Autowired
 	private MedicalExamService medicalExamService;

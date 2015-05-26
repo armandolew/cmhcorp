@@ -1,0 +1,16 @@
+package com.medem.model;
+
+import java.io.Serializable;
+
+/**
+ * <b>MedicalHistory</b> details {@link Employee}employee's medical information
+ * @author indigo
+ *
+ */
+
+@Entity
+@Table(name="medical_record")
+public class MedicalHistory implements Serializable {
+
+    
+}

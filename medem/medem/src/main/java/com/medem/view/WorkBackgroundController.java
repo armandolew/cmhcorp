@@ -18,7 +18,7 @@ public class WorkBackgroundController {
 	@Autowired
 	private WorkBackgroundService workBackgroundService;
 	
-	private static final Logger logger = Logger.getLogger(AddMedicalRecordController.class);
+	private static final Logger logger = Logger.getLogger(WorkBackgroundController.class);
 	
 	@RequestMapping(value = "/workBackground**", method = RequestMethod.GET)
 	public ModelAndView workBackgroundPage(@RequestParam(value="id", required=false) Integer id){

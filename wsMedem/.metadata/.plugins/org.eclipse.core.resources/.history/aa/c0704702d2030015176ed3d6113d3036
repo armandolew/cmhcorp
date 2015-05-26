@@ -1,0 +1,5 @@
+package com.medem.validator;
+
+public class AreaValidator {
+
+}
