@@ -30,12 +30,20 @@
 	        <value>com.medem.model.Address</value>
 	        <value>com.medem.model.BloodGroup</value>
 	        <value>com.medem.model.BodySystem</value>
+	        <value>com.medem.model.CatDiagnosis</value>
+	        <value>com.medem.model.CatPersonalNonpathological</value>
+	        <value>com.medem.model.CatPersonalPathological</value>
 	        <value>com.medem.model.Company</value>
 	        <value>com.medem.model.Diagnosis</value>
 	        <value>com.medem.model.Employee</value>
 	        <value>com.medem.model.MedicalHistory</value>
+	        <value>com.medem.model.PersonalNonpathological</value>
+	        <value>com.medem.model.PersonalPathological</value>
 	        <value>com.medem.model.PhysicalExploration</value>
 	        <value>com.medem.model.Risk</value>
+	        <value>com.medem.model.SectionDiagnoses</value>
+	        <value>com.medem.model.SectionPersonalNonpathological</value>
+	        <value>com.medem.model.SectionPersonalPathological</value>
 	        <value>com.medem.model.SexualActivity</value>
 	        <value>com.medem.model.TypeBodySystem</value>
 	        <value>com.medem.model.TypeDiagnosis</value>

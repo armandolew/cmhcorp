@@ -1,7 +1,7 @@
 package com.medem.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,62 +13,52 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
-/**
- * <b>MedicalHistory</b> details {@link Employee}employee's medical information
- * @author indigo
- *
- */
 
 @Entity
-@Table(name="medical_record")
-public class MedicalHistory implements Serializable {
+@Table(name="medical_history")
+public class MedicalHistory implements Serializable{
 
     /**
      * 
      */
     private static final long serialVersionUID = 1L;
-    
+
     @Id
-    @NotNull
     @Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     
-    @NotNull
     @Column(name="createdAt")
-    private Date createdAt;
+    private Timestamp createdAt;
     
+    @Column(name="analysis")
     private String analysis;
     
-    private String treatment;
+    @Column(name="treatment")
+    private String treatment;       
     
-    @NotNull
+    @Column(name="currentCondition")
+    private String currentCondition; 
+    
     @Column(name="createdBy")
     private String createdBy;
     
-    private String currentCondition;
+    @JoinColumn(name ="id_employee", referencedColumnName = "id", nullable = false)
+    //@OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
+    @OneToOne(optional = false, fetch = FetchType.LAZY)
+    private Employee employee;   
     
-    @NotNull
-    @JoinColumn(name="id_sexualActivity", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name ="id_sexualActivity", referencedColumnName = "id", nullable = false)
     @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
     private SexualActivity sexualActivity;
     
-    @NotNull
-    @JoinColumn(name="id_risk", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name ="id_physicalExploration", referencedColumnName = "id", nullable = false)
     @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
-    private Risk risk; 
+    private PhysicalExploration physicalExploration;  
     
-    @NotNull
-    @JoinColumn(name ="id_company", referencedColumnName = "id", nullable = false)
-    @OneToOne(fetch = FetchType.LAZY)
-    private Employee employee;
-    
-    @NotNull
-    @JoinColumn(name="id_physicalExploration", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name ="id_risk", referencedColumnName = "id", nullable = false)
     @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
-    private PhysicalExploration physicalExploration;
+    private Risk risk;    
 
     public int getId() {
         return id;
@@ -78,11 +68,11 @@ public class MedicalHistory implements Serializable {
         this.id = id;
     }
 
-    public Date getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -102,14 +92,6 @@ public class MedicalHistory implements Serializable {
         this.treatment = treatment;
     }
 
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
     public String getCurrentCondition() {
         return currentCondition;
     }
@@ -118,20 +100,12 @@ public class MedicalHistory implements Serializable {
         this.currentCondition = currentCondition;
     }
 
-    public SexualActivity getSexualActivity() {
-        return sexualActivity;
+    public String getCreatedBy() {
+        return createdBy;
     }
 
-    public void setSexualActivity(SexualActivity sexualActivity) {
-        this.sexualActivity = sexualActivity;
-    }
-
-    public Risk getRisk() {
-        return risk;
-    }
-
-    public void setRisk(Risk risk) {
-        this.risk = risk;
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 
     public Employee getEmployee() {
@@ -142,6 +116,14 @@ public class MedicalHistory implements Serializable {
         this.employee = employee;
     }
 
+    public SexualActivity getSexualActivity() {
+        return sexualActivity;
+    }
+
+    public void setSexualActivity(SexualActivity sexualActivity) {
+        this.sexualActivity = sexualActivity;
+    }
+
     public PhysicalExploration getPhysicalExploration() {
         return physicalExploration;
     }
@@ -149,7 +131,15 @@ public class MedicalHistory implements Serializable {
     public void setPhysicalExploration(PhysicalExploration physicalExploration) {
         this.physicalExploration = physicalExploration;
     }
+
+    public Risk getRisk() {
+        return risk;
+    }
+
+    public void setRisk(Risk risk) {
+        this.risk = risk;
+    }
     
-    
-    
+ 
+
 }

@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.medem.MainController;
@@ -17,6 +18,7 @@ import com.medem.service.EmployeeService;
 import com.medem.service.UserService;
 
 @Controller
+@SessionAttributes({"session"})
 public class DashboardController {
 
     @Autowired
@@ -50,6 +52,7 @@ public class DashboardController {
                 model.addObject("username", userDetails.getUsername());
                 logger.info("SESION STARTED BY " + userDetails.getUsername() + " - " + localDateTime);
                 model.setViewName("dashboard");
+                
             } catch (Exception e) {
                 logger.error("User unknown");
                 model.setViewName("redirect:/login?error");

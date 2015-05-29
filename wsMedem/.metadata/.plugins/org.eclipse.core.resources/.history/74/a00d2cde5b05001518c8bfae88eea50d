@@ -1,0 +1,116 @@
+package com.medem.service;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.medem.dao.EmployeeDAO;
+import com.medem.dao.MedicalHistoryDAO;
+import com.medem.dao.RiskDAO;
+import com.medem.dto.Assembler;
+import com.medem.dto.EmployeeDTO;
+import com.medem.dto.MedicalHistoryDTO;
+import com.medem.model.Employee;
+import com.medem.model.MedicalHistory;
+import com.medem.model.Risk;
+
+@Service("medicalHistoryService")
+public class MedicalHistoryServiceImpl implements MedicalHistoryService {
+	
+	@Autowired
+	private MedicalHistoryDAO medicalHistoryDAO;
+	
+	@Autowired
+	private EmployeeDAO employeeDAO;
+	
+	@Autowired
+	private RiskDAO riskDAO;
+
+	Calendar calendar = Calendar.getInstance();
+    java.util.Date now = calendar.getTime();
+    java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(now.getTime());	
+	
+	@Override
+	@Transactional
+	public void addMedicalHistory(MedicalHistoryDTO medicalHistoryDTO) throws Exception {
+	    try{
+
+	        
+	        System.out.println(medicalHistoryDTO.getEmployee());
+	        Employee employee = this.employeeDAO.getEmployeeById(medicalHistoryDTO.getEmployee().getId());
+	        
+	        System.out.println(employee.getName());
+	        
+	        MedicalHistory medicalHistory = (MedicalHistory) Assembler.createMedicalHistory(medicalHistoryDTO);
+	        
+	        medicalHistory.setEmployee(employee);
+	        medicalHistory.setCreatedAt(currentTimestamp);
+	        
+	        System.out.println("SERVICE!: ");
+	        System.out.println(ReflectionToStringBuilder.toString(medicalHistory));
+	        
+		    //this.medicalHistoryDAO.addMedicalHistory(medicalHistory);
+	    }
+	    catch(Exception e){
+	        throw new Exception();
+	    }
+	}
+
+	@Override
+	@Transactional
+	public List<MedicalHistoryDTO> listMedicalHistories(int employeeId) throws Exception {
+		List <MedicalHistoryDTO> listRecords = new ArrayList<MedicalHistoryDTO>();
+		
+		try{
+			for(MedicalHistory mh : medicalHistoryDAO.listMedicalHistories(employeeId)){
+				listRecords.add(Assembler.createMedicalHistoryDTO(mh));
+			}
+		}
+		
+		catch(Exception e){
+		    throw new Exception();
+		}
+		return listRecords;
+	}
+
+	@Override
+	@Transactional
+	public MedicalHistoryDTO getMedicalHistoryById(int id) throws Exception {
+	    try{
+		  return Assembler.createMedicalHistoryDTO(this.medicalHistoryDAO.getMedicalHistoryById(id));
+	    }
+	    catch(Exception e){
+	        throw new Exception();
+	    }
+	}
+
+    @Override
+    @Transactional
+    public MedicalHistoryDTO getFullMedicalHistoryById(int id) throws Exception {
+        try{
+            return Assembler.createMedicalHistoryDTO(this.medicalHistoryDAO.getFullMedicalHistoryById(id));
+        }
+        catch(Exception e){
+            throw new Exception();
+        }
+    }
+
+    @Override
+    @Transactional
+    public void deleteMedicalHistory(MedicalHistory medicalHistory) throws Exception {
+        try{
+            this.medicalHistoryDAO.deleteMedicalHistory(medicalHistory);
+        }
+        catch(Exception e){
+            throw new Exception();
+        }
+        
+    }
+	
+	
+}

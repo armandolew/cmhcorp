@@ -13,16 +13,16 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="" key="selection"/>
+		<item value="spring-test" key="selection"/>
 		<list key="findhistory">
+			<item value="spring-test"/>
+			<item value="MedicalHistory"/>
 			<item value="mock"/>
 			<item value="createMedical"/>
 			<item value="Area"/>
 			<item value="company.id"/>
 			<item value="employeeId"/>
 			<item value="User user = Assembler.createUser(userService.getUserByName(userDetails.getUsername()));"/>
-			<item value=" throws DataAccessException"/>
-			<item value="user.getCompanyId()"/>
 		</list>
 		<list key="replacehistory">
 			<item value="id_company"/>

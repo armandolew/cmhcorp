@@ -17,7 +17,6 @@ public class AreaValidator implements Validator {
     
     @Override
     public void validate(Object target, Errors errors){
-        Area area = (Area) target;
         ValidationUtils.rejectIfEmpty(errors, "name", "area.name.empty", "Nombre no puede ser vacio");
     }
 }

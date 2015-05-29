@@ -2,6 +2,7 @@ package com.medem.dao;
 
 import java.util.List;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.criterion.Restrictions;
@@ -16,6 +17,12 @@ import com.medem.model.MedicalHistory;
 @Repository("medicalHistoryDAO")
 public class MedicalHistoryDAOImpl extends HibernateDaoSupportWithJdbcTemplateHolder implements MedicalHistoryDAO {
 
+    @Autowired
+    private EmployeeDAO employeeDAO;
+    
+    @Autowired
+    private RiskDAO riskDAO;
+    
 	@Autowired
 	public MedicalHistoryDAOImpl(HibernateTemplate hibernateTemplate){
 		super(hibernateTemplate);
@@ -26,7 +33,7 @@ public class MedicalHistoryDAOImpl extends HibernateDaoSupportWithJdbcTemplateHo
 	public void addMedicalHistory(MedicalHistory medicalHistory) throws Exception {
 		
 		try{
-			getHibernateTemplate().getSessionFactory().getCurrentSession().save(medicalHistory);
+		   getHibernateTemplate().getSessionFactory().getCurrentSession().save(medicalHistory);
 
 		}
 		catch(DataAccessException dae){
@@ -60,12 +67,15 @@ public class MedicalHistoryDAOImpl extends HibernateDaoSupportWithJdbcTemplateHo
 	    try{
 	        Criteria criteria = getHibernateTemplate().getSessionFactory().getCurrentSession().createCriteria(MedicalHistory.class);
             criteria.add(Restrictions.idEq(id));
+            criteria.setFetchMode("employee", FetchMode.JOIN);
             criteria.setFetchMode("physicalExploration", FetchMode.JOIN);
             criteria.setFetchMode("sexualActivity", FetchMode.JOIN);
             criteria.setFetchMode("risk", FetchMode.JOIN);
+            criteria.setFetchMode("personalNonpathological", FetchMode.JOIN);
+            criteria.setFetchMode("personalPathological", FetchMode.JOIN);
+            criteria.setFetchMode("diagnostics", FetchMode.JOIN);
             
             MedicalHistory medicalHistory = (MedicalHistory) criteria.list().get(0);
-            
             return medicalHistory;
 	    }
 	    catch(DataAccessException dae){
@@ -82,6 +92,32 @@ public class MedicalHistoryDAOImpl extends HibernateDaoSupportWithJdbcTemplateHo
 	        throw new Exception();
 	    }
 	}
+
+
+    @Transactional
+    public MedicalHistory getMedicalHistoryByEmployee(int id_employee) throws Exception {
+        MedicalHistory medicalHistory = null;
+        try{
+            Criteria criteria = getHibernateTemplate().getSessionFactory().getCurrentSession().createCriteria(MedicalHistory.class);
+            criteria.add(Restrictions.eq("employee.id", id_employee));
+            criteria.setFetchMode("employee", FetchMode.JOIN);
+            criteria.setFetchMode("physicalExploration", FetchMode.JOIN);
+            criteria.setFetchMode("sexualActivity", FetchMode.JOIN);
+            criteria.setFetchMode("risk", FetchMode.JOIN);
+            criteria.setFetchMode("personalNonpathological", FetchMode.JOIN);
+            criteria.setFetchMode("personalPathological", FetchMode.JOIN);
+            criteria.setFetchMode("diagnostics", FetchMode.JOIN);
+            
+            medicalHistory = (MedicalHistory) criteria.list().get(0);
+            
+            System.out.println(ReflectionToStringBuilder.toString(medicalHistory));
+        }
+        catch(DataAccessException dae){
+            throw new Exception();
+        }
+        
+        return medicalHistory;
+    }
 	
 	
 	

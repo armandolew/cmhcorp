@@ -1,0 +1,5 @@
+package com.medem.model;
+
+public class CatDiagnosis {
+
+}

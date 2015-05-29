@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.medem.dto.Assembler;
-import com.medem.helpers.ErrorsHelper;
 import com.medem.model.Area;
 import com.medem.model.Company;
 import com.medem.model.User;
@@ -52,8 +51,6 @@ public class AreaController {
 	
 	private AuthenticationFacadeImpl authenticationFacadeImpl = new AuthenticationFacadeImpl();
 	
-	private ErrorsHelper errorsHelper;
-	
 	@Autowired
 	private AreaValidator areaValidator;
 	
@@ -66,13 +63,13 @@ public class AreaController {
 	@Autowired
 	private MedemViewMessages medemViewMessages;
 	
+	private StringBuilder messages;
+	
     @InitBinder
     public void initBinder(WebDataBinder webDataBinder) {
      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
      dateFormat.setLenient(false);
      webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
-     
-     //webDataBinder.addValidators(areaValidator);
     }	
 	
 	@RequestMapping(value = "/newArea/{id}", method = RequestMethod.GET)
@@ -105,12 +102,13 @@ public class AreaController {
         
         try{
             if(result.hasErrors()){
-                model.addObject("message", errorsHelper.getErrorMessages(result.getFieldErrors()));
+                messages = medemViewMessages.getErrorMessages(result);
+                model.addObject("message", messages.toString());
                 model.addObject("Area", area);
                 model.addObject("id_company", area.getCompany());
                 model.addObject("user", user);   
                 model.setViewName("newArea");
-                logger.error(errorsHelper.getErrorMessages(result.getFieldErrors()));
+                logger.error(messages);
             }
             else{
                 Company company = (Company) Assembler.createCompany(companyService.getCompanyById(area.getCompany().getId()));
@@ -121,7 +119,7 @@ public class AreaController {
             }
         }
         catch(Exception e){
-            StringBuilder messages = medemViewMessages.getErrorMessages(result);
+            messages = medemViewMessages.getErrorMessages(result);
             model.addObject("message", messages.toString());
             model.setViewName("newArea");
             logger.error(messages);            
@@ -188,13 +186,16 @@ public class AreaController {
 
         User user = Assembler.createUser(userService.getUserByName(userDetails.getUsername()));
         
+        areaValidator.validate(area, result);
+        
         try{
             if(result.hasErrors()){
-                model.addObject("message", errorsHelper.getErrorMessages(result.getFieldErrors()));
+                messages = medemViewMessages.getErrorMessages(result);
+                model.addObject("message", messages.toString());
                 model.addObject("Area", area);
                 model.addObject("user", user);   
                 model.setViewName("editArea");
-                logger.error(errorsHelper.getErrorMessages(result.getFieldErrors()));                
+                logger.error(messages);                
             }
             else{
                 logger.info(area.toString());
@@ -205,7 +206,8 @@ public class AreaController {
         }
         
         catch(Exception e){
-            model.addObject("message", e.getMessage());
+            messages = medemViewMessages.getErrorMessages(result);
+            model.addObject("message", messages.toString());
             model.addObject("Area", area);
             model.addObject("user", user); 
             model.setViewName("editArea");

@@ -1,6 +1,7 @@
 package com.medem.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import com.medem.model.ActivityCompany;
 import com.medem.model.Address;
@@ -16,9 +17,11 @@ import com.medem.model.FamilyHistory;
 import com.medem.model.MedicalExam;
 import com.medem.model.MedicalHistory;
 import com.medem.model.MedicalNote;
-import com.medem.model.PersonalPathologicals;
 import com.medem.model.PhysicalExploration;
 import com.medem.model.Risk;
+import com.medem.model.SectionDiagnoses;
+import com.medem.model.SectionPersonalNonpathological;
+import com.medem.model.SectionPersonalPathological;
 import com.medem.model.SexualActivity;
 import com.medem.model.TypeBodySystem;
 import com.medem.model.TypeDiagnosis;
@@ -357,8 +360,8 @@ public class Assembler {
     	String treatment = (medicalHistory.getTreatment() != null) ? medicalHistory.getTreatment() : "";
     	medicalHistoryDTO.setTreatment(treatment);
     	
-    	String username = (medicalHistory.getCreatedBy() != null) ?  medicalHistory.getCreatedBy() : "";
-    	medicalHistoryDTO.setCreatedBy(username);
+    	String createdBy = (medicalHistory.getCreatedBy() != null) ?  medicalHistory.getCreatedBy() : "";
+    	medicalHistoryDTO.setCreatedBy(createdBy);
     	
     	PhysicalExploration physicalExploration = (medicalHistory.getPhysicalExploration() != null) ? medicalHistory.getPhysicalExploration() : null;
     	medicalHistoryDTO.setPhysicalExploration(physicalExploration);
@@ -368,6 +371,15 @@ public class Assembler {
     	
     	SexualActivity sexualActivity = (medicalHistory.getSexualActivity() != null) ? medicalHistory.getSexualActivity() : null;
     	medicalHistoryDTO.setSexualActivity(sexualActivity);
+    	
+//    	List<SectionPersonalNonpathological> personalNonpathological = (medicalHistory.getPersonalNonpathological() != null) ? medicalHistory.getPersonalNonpathological() : null;
+//    	medicalHistoryDTO.setPersonalNonpathological(personalNonpathological);
+//
+//    	List<SectionPersonalPathological> personalPathological = (medicalHistory.getPersonalPathological() != null) ? medicalHistory.getPersonalPathological() : null;
+//    	medicalHistoryDTO.setPersonalPathological(personalPathological);
+//    	
+//    	List<SectionDiagnoses> diagnostics = (medicalHistory.getDiagnostics() != null) ? medicalHistory.getDiagnostics() : null;
+//    	medicalHistoryDTO.setDiagnostics(diagnostics);
     	
     	return medicalHistoryDTO;
     }
@@ -387,8 +399,8 @@ public class Assembler {
         String treatment = (medicalHistoryDTO.getTreatment() != null) ? medicalHistoryDTO.getTreatment() : "";
         medicalHistory.setTreatment(treatment);
         
-        String username = (medicalHistoryDTO.getCreatedBy() != null) ?  medicalHistoryDTO.getCreatedBy() : "";
-        medicalHistory.setCreatedBy(username);
+        String createdBy = (medicalHistoryDTO.getCreatedBy() != null) ?  medicalHistoryDTO.getCreatedBy() : "";
+        medicalHistory.setCreatedBy(createdBy);
         
         PhysicalExploration physicalExploration = (medicalHistoryDTO.getPhysicalExploration() != null) ? medicalHistoryDTO.getPhysicalExploration() : null;
         medicalHistory.setPhysicalExploration(physicalExploration);
@@ -399,44 +411,24 @@ public class Assembler {
         SexualActivity sexualActivity = (medicalHistoryDTO.getSexualActivity() != null) ? medicalHistoryDTO.getSexualActivity() : null;
         medicalHistory.setSexualActivity(sexualActivity);
         
+//      List<SectionPersonalNonpathological> personalNonpathological = (medicalHistory.getPersonalNonpathological() != null) ? medicalHistory.getPersonalNonpathological() : null;
+//      medicalHistoryDTO.setPersonalNonpathological(personalNonpathological);
+//
+//      List<SectionPersonalPathological> personalPathological = (medicalHistory.getPersonalPathological() != null) ? medicalHistory.getPersonalPathological() : null;
+//      medicalHistoryDTO.setPersonalPathological(personalPathological);
+//      
+//      List<SectionDiagnoses> diagnostics = (medicalHistory.getDiagnostics() != null) ? medicalHistory.getDiagnostics() : null;
+//      medicalHistoryDTO.setDiagnostics(diagnostics);
+        
         return medicalHistory;
-    }    
-    
-    public static PersonalPathologicalsDTO createPersonalPathologicalsDTO(PersonalPathologicals personalPathologicals){
-    	PersonalPathologicalsDTO personalPathologicalsDTO = new PersonalPathologicalsDTO();
-    	
-    	int idPersonalPathologicalsDTO = (personalPathologicals.getId() > 0) ? personalPathologicals.getId() : 0;
-    	personalPathologicalsDTO.setId(idPersonalPathologicalsDTO);
-    	
-    	int examIdPersonalPathologicalDTO = (personalPathologicals.getExamId() > 0) ? personalPathologicals.getExamId() : 0;
-    	personalPathologicalsDTO.setExamId(examIdPersonalPathologicalDTO);
-    	
-    	int examTypePersonalPathologicalDTO = (personalPathologicals.getExamType() > 0) ? personalPathologicals.getExamType() : 0;
-    	personalPathologicalsDTO.setExamType(examTypePersonalPathologicalDTO);
-    	
-    	int valuePersonalPathologicalDTO = (personalPathologicals.getValue() > 0) ? personalPathologicals.getValue() : 0;
-    	personalPathologicalsDTO.setValue(valuePersonalPathologicalDTO);
-    	
-    	String createdPersonalPathologicalDTO = (personalPathologicals.getCreatedAt() != null) ? personalPathologicals.getCreatedAt() : "-";
-    	personalPathologicalsDTO.setCreatedAt(createdPersonalPathologicalDTO);
-
-    	String remarksPersonalPathologicalDTO = (personalPathologicals.getRemarks() != null) ? personalPathologicals.getRemarks() : "-";
-    	personalPathologicalsDTO.setRemarks(remarksPersonalPathologicalDTO);
-    	
-    	return personalPathologicalsDTO;
     }
+
     
     public static SexualActivityDTO createSexualActivityDTO(SexualActivity sexualActivity){
     	SexualActivityDTO sexualActivityDTO = new SexualActivityDTO();
     	
     	int idSADTO = (sexualActivity.getId() > 0) ? sexualActivity.getId() : 0;
     	sexualActivityDTO.setId(idSADTO);
-    	
-    	int examIdSADTO = (sexualActivity.getExamId() > 0) ? sexualActivity.getExamId() : 0;
-    	sexualActivityDTO.setExamId(examIdSADTO);
-    	
-    	int examTypeSADTO = (sexualActivity.getExamType() > 0) ? sexualActivity.getExamType() : 0;
-    	sexualActivityDTO.setExamType(examTypeSADTO);
     	
     	int ivsaSADTO = (sexualActivity.getIvsa() > 0) ? sexualActivity.getIvsa() : 0;
     	sexualActivityDTO.setIvsa(ivsaSADTO);
@@ -471,17 +463,58 @@ public class Assembler {
     	int menopauseSADTO = (sexualActivity.getMenopause() > 0) ? sexualActivity.getMenopause() : 0;
     	sexualActivityDTO.setMenopause(menopauseSADTO);
     	
-    	String preventionSADTO = (sexualActivity.getPrevention() != null) ? sexualActivity.getPrevention() : "-";
-    	sexualActivityDTO.setPrevention(preventionSADTO);
-    	
     	int resultSADTO = (sexualActivity.getResult() > 0) ? sexualActivity.getResult() : 0;
     	sexualActivityDTO.setResult(resultSADTO);
     	
-    	String createdAtSADTO = (sexualActivity.getCreatedAt() != null) ? sexualActivity.getCreatedAt() : "-";
-    	sexualActivityDTO.setCreatedAt(createdAtSADTO);
-    	   	
+   	   	
     	return sexualActivityDTO;
     }
+    
+    public static SexualActivity createSexualActivity(SexualActivityDTO sexualActivityDTO){
+        SexualActivity sexualActivity = new SexualActivity();
+        
+        int id = (sexualActivityDTO.getId() > 0) ? sexualActivityDTO.getId() : 0;
+        sexualActivity.setId(id);
+        
+        int ivsa = (sexualActivityDTO.getIvsa() > 0) ? sexualActivityDTO.getIvsa() : 0;
+        sexualActivity.setIvsa(ivsa);
+        
+        int contraceptiveMethod= (sexualActivityDTO.getContraceptiveMethod() > 0) ? sexualActivityDTO.getContraceptiveMethod() : 0;
+        sexualActivity.setContraceptiveMethod(contraceptiveMethod);
+        
+        int ets = (sexualActivityDTO.getEts() > 0) ? sexualActivityDTO.getEts() : 0;
+        sexualActivity.setEts(ets);
+        
+        int menarche = (sexualActivityDTO.getMenarche() > 0) ? sexualActivityDTO.getMenarche() : 0;
+        sexualActivity.setMenarche(menarche);
+        
+        int cycles = (sexualActivityDTO.getCycles() > 0 ) ? sexualActivityDTO.getCycles() : 0;
+        sexualActivity.setCycles(cycles);
+        
+        int rhythm = (sexualActivityDTO.getRhythm() > 0) ? sexualActivityDTO.getRhythm() : 0;
+        sexualActivity.setRhythm(rhythm);
+        
+        int pregnancies = (sexualActivityDTO.getPregnancies() > 0) ? sexualActivityDTO.getPregnancies() : 0;
+        sexualActivity.setPregnancies(pregnancies);
+        
+        int stops = (sexualActivityDTO.getStops() > 0) ? sexualActivityDTO.getStops() : 0;
+        sexualActivity.setStops(stops);
+        
+        int abortions = (sexualActivityDTO.getAbortions() > 0) ? sexualActivityDTO.getAbortions() : 0;
+        sexualActivity.setAbortions(abortions);
+        
+        int csections = (sexualActivityDTO.getCsections() > 0) ? sexualActivityDTO.getCsections() : 0;
+        sexualActivity.setCsections(csections);
+        
+        int menopause = (sexualActivityDTO.getMenopause() > 0) ? sexualActivityDTO.getMenopause() : 0;
+        sexualActivity.setMenopause(menopause);
+        
+        int result = (sexualActivityDTO.getResult() > 0) ? sexualActivityDTO.getResult() : 0;
+        sexualActivity.setResult(result);
+
+            
+        return sexualActivity;
+    }    
     
     public static EmployeeRiskDTO createEmployeeRiskDTO(EmployeeRisk employeeRisk){
     	EmployeeRiskDTO employeeRiskDTO = new EmployeeRiskDTO();
@@ -506,12 +539,7 @@ public class Assembler {
     
     public static PhysicalExplorationDTO createPhysicalExplorationDTO(PhysicalExploration physicalExploration){
     	PhysicalExplorationDTO physicalExplorationDTO = new PhysicalExplorationDTO();
-    	
-    	int examIdPEDTO = (physicalExploration.getExamId() > 0) ? physicalExploration.getExamId() : 0;
-        physicalExplorationDTO.setExamId(examIdPEDTO);
-        
-        int examTypePEDTO = (physicalExploration.getExamType() > 0) ? physicalExploration.getExamType() : 0;
-        physicalExplorationDTO.setExamType(examTypePEDTO);
+
         
         int heartRatePEDTO = (physicalExploration.getHeartRate() > 0) ? physicalExploration.getHeartRate() : 0;
         physicalExplorationDTO.setHeartRate(heartRatePEDTO);
@@ -563,9 +591,7 @@ public class Assembler {
         
         String nervousSystemPEDTO = (physicalExploration.getNervousSystem() != null) ? physicalExploration.getNervousSystem() : "-";
         physicalExplorationDTO.setNervousSystem(nervousSystemPEDTO);
-        
-        String createdAtPEDTO = (physicalExploration.getCreatedAt() != null) ? physicalExploration.getCreatedAt() : "-";
-        physicalExplorationDTO.setCreatedAt(createdAtPEDTO);
+
         
         
     	return physicalExplorationDTO;

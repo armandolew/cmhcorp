@@ -213,6 +213,10 @@ loadEmployeeInformation = function(employeeId){
 	});	
 }
 
+getIMC = function(){
+	
+}
+
 
 $(document).ready(function(){
 	console.log($("body").attr("id") + " done.");

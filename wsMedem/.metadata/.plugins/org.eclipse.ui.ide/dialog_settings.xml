@@ -138,10 +138,10 @@
 		<item value="org.springsource.sts:3.6.4.201503100339-RELEASE"/>
 	</list>
 	<section name="CleanDialogSettings">
-		<item value="1263" key="DIALOG_WIDTH"/>
+		<item value="1315" key="DIALOG_WIDTH"/>
 		<item value="24" key="DIALOG_Y_ORIGIN"/>
-		<item value="103" key="DIALOG_X_ORIGIN"/>
-		<item value="764" key="DIALOG_HEIGHT"/>
+		<item value="716" key="DIALOG_HEIGHT"/>
+		<item value="51" key="DIALOG_X_ORIGIN"/>
 		<item value="false" key="TOGGLE_SELECTED"/>
 	</section>
 </section>

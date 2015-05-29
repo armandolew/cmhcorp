@@ -284,30 +284,30 @@ public class Employee implements Serializable{
         this.enabled = enabled;
     }
     
-    @Override
-    public String toString(){
-        return "Employee: {"
-               + "id: " + id
-               + ", name: " + name
-               + ", lastname: " + lastName1
-               + ", lastname: " + lastName2
-               + ", dateOfBirth: " + dateOfBirth
-               + ", gender: " + gender
-               + ", maritalStatus: " + maritalStatus
-               + ", religion: " + religion
-               + ", bloodGroup: " + bloodGroup
-               + ", RH: " + rh
-               + ", originPlace: " + originPlace
-               + ", address: " + address.getStreet()
-               + ", phone: " + phone
-               + ", town: " + address.getTown()
-               + ", zipCode: " + address.getZipcode()
-               + ", contactName: " + contactName
-               + ", contactPhone: " + contactPhone
-               + ", area: " + area
-               + ", company: " + company
-               + ", createdAt: " + createdAt
-               + ", createdBy: " + createdBy
-               + "}"; 
-    }
+//    @Override
+//    public String toString(){
+//        return "Employee: {"
+//               + "id: " + id
+//               + ", name: " + name
+//               + ", lastname: " + lastName1
+//               + ", lastname: " + lastName2
+//               + ", dateOfBirth: " + dateOfBirth
+//               + ", gender: " + gender
+//               + ", maritalStatus: " + maritalStatus
+//               + ", religion: " + religion
+//               + ", bloodGroup: " + bloodGroup
+//               + ", RH: " + rh
+//               + ", originPlace: " + originPlace
+//               + ", address: " + address.getStreet()
+//               + ", phone: " + phone
+//               + ", town: " + address.getTown()
+//               + ", zipCode: " + address.getZipcode()
+//               + ", contactName: " + contactName
+//               + ", contactPhone: " + contactPhone
+//               + ", area: " + area
+//               + ", company: " + company
+//               + ", createdAt: " + createdAt
+//               + ", createdBy: " + createdBy
+//               + "}"; 
+//    }
 }

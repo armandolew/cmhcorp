@@ -74,7 +74,7 @@ public class EmployeeController {
 
 
     @RequestMapping(value = "/newEmployee**", method = RequestMethod.GET)
-	public ModelAndView employee()
+	public ModelAndView newEmployeePage()
 	{
 		ModelAndView model = new ModelAndView();
 		BasicConfigurator.configure();

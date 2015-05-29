@@ -7,10 +7,11 @@ import com.medem.model.MedicalHistory;
 
 public interface MedicalHistoryService {
 
-    public void addMedicalHistory(MedicalHistory medicalHistory) throws Exception;
+    public void addMedicalHistory(MedicalHistoryDTO medicalHistoryDTO) throws Exception;
     public List<MedicalHistoryDTO> listMedicalHistories(int employeeId) throws Exception;
     public MedicalHistoryDTO getMedicalHistoryById(int id) throws Exception;
     public MedicalHistoryDTO getFullMedicalHistoryById(int id) throws Exception;
     public void deleteMedicalHistory(MedicalHistory medicalHistory) throws Exception;
+    public MedicalHistoryDTO getMedicalHistoryByEmployee(int id_employee) throws Exception;
 	
 }

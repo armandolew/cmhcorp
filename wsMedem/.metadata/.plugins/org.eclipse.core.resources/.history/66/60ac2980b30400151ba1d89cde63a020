@@ -1,0 +1,191 @@
+package com.medem.model;
+
+import java.io.Serializable;
+import java.security.Timestamp;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name="medical_history")
+public class MedicalHistory implements Serializable{
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
+    
+    @NotNull
+    @Column(name="createdAt")
+    private Timestamp createdAt;
+    
+    @Column(name="analysis")
+    private String analysis;
+    
+    @Column(name="treatment")
+    private String treatment;       
+    
+    @Column(name="currentCondition")
+    private String currentCondition;        
+    
+    @NotNull
+    @JoinColumn(name ="id_sexualActivity", referencedColumnName = "id", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
+    private SexualActivity sexualActivity;
+           
+    @NotNull
+    @JoinColumn(name ="id_risk", referencedColumnName = "id", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
+    private Risk risk;
+    
+    @NotNull
+    @JoinColumn(name ="id_employee", referencedColumnName = "id", nullable = false)
+    //@OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
+	private Employee employee;
+    
+    @NotNull
+    @JoinColumn(name ="id_physicalExploration", referencedColumnName = "id", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
+    private PhysicalExploration physicalExploration;
+    
+//    /** Lista de personales patologicos que forman parte de la seccion de personales patologicos en el historial medico **/
+//    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "id_medicalHistory")
+//    private List<SectionPersonalNonpathological> personalNonpathological;
+//    
+//    /** Lista de personales no patologicos que forman parte de la seccion de personales no patologicos en el historial medico **/
+//    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "id_medicalHistory")
+//    private List<SectionPersonalPathological> personalPathological;
+//    
+//    /**  **/
+//    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    @JoinColumn(name = "id_medicalHistory")
+//    private List<SectionDiagnoses> diagnostics;
+    
+    @NotNull
+    @Column(name="createdBy")
+    private String createdBy;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getAnalysis() {
+        return analysis;
+    }
+
+    public void setAnalysis(String analysis) {
+        this.analysis = analysis;
+    }
+
+    public String getTreatment() {
+        return treatment;
+    }
+
+    public void setTreatment(String treatment) {
+        this.treatment = treatment;
+    }
+
+    public String getCurrentCondition() {
+        return currentCondition;
+    }
+
+    public void setCurrentCondition(String currentCondition) {
+        this.currentCondition = currentCondition;
+    }
+
+    public SexualActivity getSexualActivity() {
+        return sexualActivity;
+    }
+
+    public void setSexualActivity(SexualActivity sexualActivity) {
+        this.sexualActivity = sexualActivity;
+    }
+
+    public Risk getRisk() {
+        return risk;
+    }
+
+    public void setRisk(Risk risk) {
+        this.risk = risk;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public PhysicalExploration getPhysicalExploration() {
+        return physicalExploration;
+    }
+
+    public void setPhysicalExploration(PhysicalExploration physicalExploration) {
+        this.physicalExploration = physicalExploration;
+    }
+
+//    public List<SectionPersonalNonpathological> getPersonalNonpathological() {
+//        return personalNonpathological;
+//    }
+//
+//    public void setPersonalNonpathological(List<SectionPersonalNonpathological> personalNonpathological) {
+//        this.personalNonpathological = personalNonpathological;
+//    }
+//
+//    public List<SectionPersonalPathological> getPersonalPathological() {
+//        return personalPathological;
+//    }
+
+//    public void setPersonalPathological(List<SectionPersonalPathological> personalPathological) {
+//        this.personalPathological = personalPathological;
+//    }
+//
+//    public List<SectionDiagnoses> getDiagnostics() {
+//        return diagnostics;
+//    }
+//
+//    public void setDiagnostics(List<SectionDiagnoses> diagnostics) {
+//        this.diagnostics = diagnostics;
+//    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }  
+	
+}

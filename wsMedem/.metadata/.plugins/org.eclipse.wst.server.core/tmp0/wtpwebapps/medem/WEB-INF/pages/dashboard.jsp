@@ -1,7 +1,7 @@
-<%@page session="true"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ page session="true"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 
 <!DOCTYPE>
@@ -18,7 +18,11 @@
       		<title>MEDEM :: Bienvenido</title>
 		</head>
 		
+		
+		
 		<body id="dashboard">
+		
+			${testVariable}
 		
 			<jsp:include page="layouts/navigation_layout.jsp"></jsp:include>
 			

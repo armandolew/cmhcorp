@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
@@ -21,7 +22,6 @@ import com.medem.security.AuthenticationFacadeImpl;
 import com.medem.service.UserService;
 
 @Component
-@SessionAttributes("userData")
 public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
    
     @Autowired
@@ -61,6 +61,10 @@ public class CustomAuthenticationSuccessHandler extends SimpleUrlAuthenticationS
                         (UserDetails) authenticationFacadeImpl.getAutentication().getPrincipal();
 
                 User user = Assembler.createUser(userService.getUserByName(userDetails.getUsername())); 
+                HttpSession session = request.getSession();
+                session.setAttribute("username", user.getUsername()); 
+                session.setAttribute("usercompany", user.getCompany().getId());
+                session.setAttribute("userfirstname", user.getFirstname());
                 response.sendRedirect("welcome");
             }
             else{

@@ -11,5 +11,6 @@ public interface MedicalHistoryDAO {
 	public MedicalHistory getMedicalHistoryById(int id) throws Exception;
 	public MedicalHistory getFullMedicalHistoryById(int id) throws Exception;
 	public void deleteMedicalHistory(MedicalHistory medicalHistory) throws Exception;
+	public MedicalHistory getMedicalHistoryByEmployee(int id_employee) throws Exception;
 	
 }
